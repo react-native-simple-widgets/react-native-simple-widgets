@@ -4,11 +4,10 @@ module.exports = {
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
         // Uncomment the following lines to enable eslint-config-prettier
         // Is not enabled right now to avoid issues with the Next.js repo
-        // "prettier",
-        // "prettier/@typescript-eslint"
+        "prettier",
     ],
     "settings": {
         "react": {
@@ -38,12 +37,9 @@ module.exports = {
                 "allow": ["info", "warn", "error"]
             }
         ],
-        "indent": [ 2, 4 ],
-        "semi": [ 2, "always" ],
-        "quotes": [ 2, "double" ],
         "@typescript-eslint/explicit-module-boundary-types": 0,
         "@typescript-eslint/ban-ts-comment": 0,
-        "@typescript-eslint/no-unused-vars": [ 1, { "args": "none" } ],
+        "@typescript-eslint/no-unused-vars": [ 2, { "args": "none" } ],
         "no-case-declarations": 1,
     }
 };
