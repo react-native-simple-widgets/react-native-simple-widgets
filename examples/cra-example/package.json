@@ -1,0 +1,97 @@
+{
+    "name": "cra-example",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@babel/preset-flow": "^7.12.13",
+        "@babel/runtime": "^7.12.5",
+        "@mdi/svg": "^5.9.55",
+        "@ovaeasy/react-native-vector-icons": "^7.0.4",
+        "@react-native-community/datetimepicker": "^3.5.0",
+        "@react-native-community/masked-view": "^0.1.10",
+        "@react-navigation/native": "^5.9.2",
+        "@react-navigation/stack": "^5.14.2",
+        "@testing-library/jest-dom": "^5.11.4",
+        "@testing-library/react": "^11.1.0",
+        "@testing-library/user-event": "^12.1.10",
+        "@types/jest": "^26.0.15",
+        "@types/node": "^12.0.0",
+        "@types/react": "^16.9.53",
+        "@types/react-dom": "^16.9.8",
+        "classnames": "^2.3.1",
+        "dayjs": "^1.10.7",
+        "react": "16.13.1",
+        "react-dom": "16.13.1",
+        "react-native-gesture-handler": "^1.9.0",
+        "react-native-reanimated": "^1.13.2",
+        "react-native-safe-area-context": "^3.1.9",
+        "react-native-screens": "^2.17.1",
+        "react-native-simple-elements": "1.5.0-develop.1",
+        "react-native-simple-widgets": "file:../../react-native-simple-widgets",
+        "react-native-web": "0.15.0",
+        "react-native-web-linear-gradient": "^1.1.1",
+        "react-router-dom": "^5.2.0",
+        "react-scripts": "4.0.1",
+        "styled-components": "^5.2.1",
+        "styled-system": "^5.1.5",
+        "typescript": "^4.0.3",
+        "web-vitals": "^0.2.4"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.12.10",
+        "@babel/plugin-proposal-class-properties": "^7.12.1",
+        "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.13",
+        "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+        "@babel/plugin-proposal-optional-chaining": "^7.12.13",
+        "@babel/plugin-transform-flow-strip-types": "^7.12.13",
+        "@babel/plugin-transform-modules-commonjs": "^7.12.13",
+        "@babel/plugin-transform-template-literals": "^7.12.13",
+        "@babel/preset-env": "^7.12.11",
+        "@babel/preset-react": "^7.12.10",
+        "@babel/preset-typescript": "^7.12.7",
+        "@storybook/addon-actions": "5.3.14",
+        "@storybook/addon-knobs": "5.3.14",
+        "@storybook/addon-links": "5.3.14",
+        "@storybook/addon-viewport": "^6.3.2",
+        "@storybook/addons": "5.3.14",
+        "@storybook/preset-create-react-app": "~1.5.2",
+        "@storybook/react": "5.3.14",
+        "@svgr/webpack": "^5.5.0",
+        "babel-loader": "8.1.0",
+        "babel-plugin-inline-import": "^3.0.0",
+        "babel-plugin-inline-react-svg": "^1.1.2",
+        "babel-plugin-module-resolver": "^4.1.0",
+        "babel-plugin-react-native-web": "^0.14.10",
+        "babel-plugin-styled-components": "^1.12.0",
+        "customize-cra": "^1.0.0",
+        "react-app-rewired": "^2.1.8",
+        "react-native-linear-gradient": "^2.5.6"
+    },
+    "scripts": {
+        "storybook": "start-storybook -p 6006",
+        "build-storybook": "build-storybook",
+        "start": "react-app-rewired start",
+        "build": "react-app-rewired build",
+        "type-check": "tsc --noEmit",
+        "test": "react-app-rewired test",
+        "eject": "react-app-rewired eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
