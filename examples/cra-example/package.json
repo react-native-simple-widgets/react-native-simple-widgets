@@ -26,7 +26,7 @@
         "react-native-reanimated": "^1.13.2",
         "react-native-safe-area-context": "^3.1.9",
         "react-native-screens": "^2.17.1",
-        "react-native-simple-elements": "1.5.0-develop.1",
+        "react-native-simple-elements": "1.5.0-develop.10",
         "react-native-simple-widgets": "file:../../react-native-simple-widgets",
         "react-native-web": "0.15.0",
         "react-native-web-linear-gradient": "^1.1.1",

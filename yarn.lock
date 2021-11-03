@@ -14448,10 +14448,10 @@ react-native-pager-view@^5.4.4:
   resolved "https://registry.yarnpkg.com/react-native-pager-view/-/react-native-pager-view-5.4.4.tgz#83a873a82748440696ca0e0fd07a77477b854a78"
   integrity sha512-5zyol+FZ9X4N4OEz92IyaFFROR3KtgAgTmgqlUvG59Eigf+f6aWs5fvcbWwzuz/AlLZbrxIDrnLmSpMUOK57ww==
 
-react-native-simple-elements@1.5.0-develop.1:
-  version "1.5.0-develop.1"
-  resolved "https://registry.yarnpkg.com/react-native-simple-elements/-/react-native-simple-elements-1.5.0-develop.1.tgz#f608233924d826be9e11395b85fd8980b32d0ea2"
-  integrity sha512-umK7c/4mRmSawjRVQgQWL7chKogV6LIHiNSDkch6FSwNYek7tOj+KVCUrUGdr2OIrdDpRuzwKs8arlPhdCiY3g==
+react-native-simple-elements@1.5.0-develop.10:
+  version "1.5.0-develop.10"
+  resolved "https://registry.yarnpkg.com/react-native-simple-elements/-/react-native-simple-elements-1.5.0-develop.10.tgz#a5939f126238c9af5ff4fb027c1eb1b746b576cc"
+  integrity sha512-QyiMPDhXVylxiAelAX/jtS+/nrD+5jneMDLXUpgPIHUOThpO3DFaoUXX/RLS97b7EgjFMcLG9sUl63W6M+UA0Q==
   dependencies:
     color "3.1.2"
     react-native-linear-gradient "^2.5.6"
