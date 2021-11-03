@@ -13,6 +13,7 @@ import { MenuItemProps } from "../AuthorizedUserMenu/AuthorizedUserMenu";
 import HomeIcon from "@mdi/svg/svg/home.svg";
 import AccountIcon from "@mdi/svg/svg/account.svg";
 import { View } from "react-native";
+import Container, { FlexRowContainer } from "react-native-simple-elements/components/Container";
 
 const HeaderContainer = styled.View({
     zIndex: 3,
@@ -104,69 +105,80 @@ const SimpleHeader = (props: Props) => {
                 marginRight: shouldCheckScrollbarSize ? scrollbarSize || 0 : 0,
             }}
         >
-            <AppbarHeader>
-                {isMobileView ?
-                    <>
-                        {mobileLeft ? mobileLeft() :
-                            <AppbarBackAction
-                                icon={showBackIcon ? backButtonIcon : HomeIcon}
-                                onPress={_handleBackActionPress}
+            <AppbarHeader
+                style={{
+                    justifyContent: "center",
+                }}
+            >
+                <Container>
+                    <FlexRowContainer>
+                        {isMobileView ?
+                            <>
+                                {mobileLeft ? mobileLeft() :
+                                    <AppbarBackAction
+                                        icon={showBackIcon ? backButtonIcon : HomeIcon}
+                                        onPress={_handleBackActionPress}
+                                    />
+                                }
+                            </>
+                            :
+                            null
+                        }
+                        {!isMobileView && desktopLeft ?
+                            <>
+                                <DesktopLeftContentWrapper>
+                                    {desktopLeft ? desktopLeft() : null}
+                                </DesktopLeftContentWrapper>
+                            </>
+                            :
+                            null
+                        }
+                        {isMobileView ?
+                            <>
+                                {mobileContent ? mobileContent() :
+                                    <AppbarContent
+                                        title={title}
+                                        subtitle={subtitle}
+                                        style={{
+                                            justifyContent: "center",
+                                        }}
+                                    />
+                                }
+                            </>
+                            :
+                            null
+                        }
+                        {!isMobileView ?
+                            <View
+                                style={{
+                                    flex: 1,
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                }}
+                            >
+                                {desktopContent ? desktopContent() : null}
+                            </View>
+                            :
+                            null
+                        }
+                        {isMobileView && mobileRight ? mobileRight() : null}
+                        {!isMobileView && desktopRight ? desktopRight() : null}
+                        {loggedInUser?.userId ?
+                            <AuthorizedUserMenu
+                                circle={isUserIconCircle}
+                                loggedInUser={loggedInUser}
+                                onViewProfileClick={onViewProfileClick}
+                                onLogoutClick={onLogoutClick}
+                                userMenuItems={userMenuItems}
+                                onUserMenuItemPress={onUserMenuItemPress}
+                            /> :
+                            <AppbarAction
+                                icon={AccountIcon}
+                                onPress={_handleLoginClick}
                             />
                         }
-                    </>
-                    :
-                    null
-                }
-                {!isMobileView && desktopLeft ?
-                    <>
-                        <DesktopLeftContentWrapper>
-                            {desktopLeft ? desktopLeft() : null}
-                        </DesktopLeftContentWrapper>
-                    </>
-                    :
-                    null
-                }
-                {isMobileView ?
-                    <>
-                        {mobileContent ? mobileContent() :
-                            <AppbarContent
-                                title={title}
-                                subtitle={subtitle}
-                            />
-                        }
-                    </>
-                    :
-                    null
-                }
-                {!isMobileView ?
-                    <View
-                        style={{
-                            flex: 1,
-                            flexDirection: "row",
-                            alignItems: "center",
-                        }}
-                    >
-                        {desktopContent ? desktopContent() : null}
-                    </View>
-                    :
-                    null
-                }
-                {isMobileView && mobileRight ? mobileRight() : null}
-                {!isMobileView && desktopRight ? desktopRight() : null}
-                {loggedInUser?.userId ?
-                    <AuthorizedUserMenu
-                        circle={isUserIconCircle}
-                        loggedInUser={loggedInUser}
-                        onViewProfileClick={onViewProfileClick}
-                        onLogoutClick={onLogoutClick}
-                        userMenuItems={userMenuItems}
-                        onUserMenuItemPress={onUserMenuItemPress}
-                    /> :
-                    <AppbarAction
-                        icon={AccountIcon}
-                        onPress={_handleLoginClick}
-                    />
-                }
+                    </FlexRowContainer>
+                </Container>
             </AppbarHeader>
         </HeaderContainer>
     );
