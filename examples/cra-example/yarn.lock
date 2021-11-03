@@ -12920,16 +12920,16 @@ react-native-screens@^2.17.1:
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.17.1.tgz#c3c0ac750af48741c5b1635511e6af2a27b74309"
   integrity sha512-B4gD5e4csvlVwlhf+RNqjQZ9mHTwe/iL3rXondgZxnKz4oW0QAmtLnLRKOrYVxoaJaF9Fy7jhjo//24/472APQ==
 
-react-native-simple-elements@1.5.0-develop.10:
-  version "1.5.0-develop.10"
-  resolved "https://registry.yarnpkg.com/react-native-simple-elements/-/react-native-simple-elements-1.5.0-develop.10.tgz#a5939f126238c9af5ff4fb027c1eb1b746b576cc"
-  integrity sha512-QyiMPDhXVylxiAelAX/jtS+/nrD+5jneMDLXUpgPIHUOThpO3DFaoUXX/RLS97b7EgjFMcLG9sUl63W6M+UA0Q==
+react-native-simple-elements@1.5.0-develop.11:
+  version "1.5.0-develop.11"
+  resolved "https://registry.yarnpkg.com/react-native-simple-elements/-/react-native-simple-elements-1.5.0-develop.11.tgz#d9021fadb1f146b7aff863669c624c636222adae"
+  integrity sha512-jvdpRddmjp71VZTwzIWmIoptu8hLrxEgs6E0HAPfSbrZOo7l2YcZS+fdEP/aSxMG+xrZjiwxY0JNcqvBbwroRg==
   dependencies:
     color "3.1.2"
     react-native-linear-gradient "^2.5.6"
 
 "react-native-simple-widgets@file:../../react-native-simple-widgets":
-  version "1.4.1-develop.4"
+  version "1.4.1-develop.6"
   dependencies:
     "@react-native-picker/picker" "^1.16.1"
     calendarize "^1.1.1"
