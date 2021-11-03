@@ -81,6 +81,44 @@ const SimpleHeaderExample = (props) => {
     )
 }
 
+const WithContainerFluidExample = (props) => {
+    const title = text("title", "Title");
+
+    return (
+        <>
+            <SimpleHeader
+                backButtonIcon={MenuIcon}
+                onBackActionPress={onBackButtonPress}
+                title={title}
+                loggedInUser={{
+                    firstName: "Username",
+                    avatarUrl: "https://via.placeholder.com/350",
+                }}
+                onLoginClick={action("onLoginClick")}
+                onViewProfileClick={action("onViewProfileClick")}
+                onLogoutClick={action("onLogoutClick")}
+                fluid={true}
+            />
+            <ScrollviewViewport>
+                {(Array.isArray(items) && items.length > 0) &&
+                    items.map((item, index) => {
+                        return (
+                            <View
+                                key={index}
+                                style={{
+                                    height: 200,
+                                }}
+                            >
+                                <Text>{`Item ${index}`}</Text>
+                            </View>
+                        )
+                    })
+                }
+            </ScrollviewViewport>
+        </>
+    )
+}
+
 const WithLoggedInUserExample = () => {
     return(
         <>
@@ -305,6 +343,7 @@ storiesOf("SimpleHeader", module)
     .addDecorator(withKnobs)
     .add("Default", () => <SimpleHeaderExample />)
     .add("Mobile View", () => <SimpleHeaderExample />, iphonexlayout)
+    .add("with Container Fluid", () => <WithContainerFluidExample />)
     .add("with loggedInUser", () => <WithLoggedInUserExample />)
     .add("with shouldCheckScrollbarSize", () => <WithScrollbarSizeExample />)
     .add("with mobile render", () => <WithMobileRenderExample />, iphonexlayout)

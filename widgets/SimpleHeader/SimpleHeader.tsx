@@ -13,7 +13,7 @@ import { MenuItemProps } from "../AuthorizedUserMenu/AuthorizedUserMenu";
 import HomeIcon from "@mdi/svg/svg/home.svg";
 import AccountIcon from "@mdi/svg/svg/account.svg";
 import { View } from "react-native";
-import Container, { FlexRowContainer } from "react-native-simple-elements/components/Container";
+import Container, { ContainerFluid, FlexRowContainer } from "react-native-simple-elements/components/Container";
 
 const HeaderContainer = styled.View({
     zIndex: 3,
@@ -46,11 +46,13 @@ type Props = {
     onLogoutClick?: () => void,
     userMenuItems?: MenuItemProps[],
     onUserMenuItemPress?: (item?) => void,
+    fluid?: boolean,
 };
 
 const defaultProps = {
     isUserIconCircle: true,
     shouldCheckScrollbarSize: false,
+    fluid: false,
 };
 
 const SimpleHeader = (props: Props) => {
@@ -76,7 +78,10 @@ const SimpleHeader = (props: Props) => {
         onLogoutClick,
         userMenuItems,
         onUserMenuItemPress,
+        fluid,
     } = props;
+
+    const ContainerComponent = fluid ? ContainerFluid : Container;
 
     const { isMobileView } = useScreenSize();
     const { width: scrollbarSize } = useScrollbarSize();
@@ -110,7 +115,7 @@ const SimpleHeader = (props: Props) => {
                     justifyContent: "center",
                 }}
             >
-                <Container>
+                <ContainerComponent>
                     <FlexRowContainer>
                         {isMobileView ?
                             <>
@@ -178,7 +183,7 @@ const SimpleHeader = (props: Props) => {
                             />
                         }
                     </FlexRowContainer>
-                </Container>
+                </ContainerComponent>
             </AppbarHeader>
         </HeaderContainer>
     );
