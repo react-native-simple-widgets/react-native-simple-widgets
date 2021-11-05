@@ -1,10 +1,12 @@
 import React from 'react';
 import { useColorScheme } from 'react-native';
 import { addDecorator } from '@storybook/react';
+import LocaleProvider from 'react-native-simple-widgets/widgets/utils/i18n';
 import PaperProviver from 'react-native-simple-elements/components/theme/Provider';
 import ToastProvider from 'react-native-simple-elements/components/Toast';
 import { Viewport } from 'react-native-simple-elements/components/Container';
 import { createGlobalStyle } from 'styled-components';
+import defaultLocale from './i18n/defaultLocale';
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -22,14 +24,29 @@ const StoryBookUI = ({ children }) => {
 
     const colorSchema = useColorScheme();
 
+    const _handleFetchJSON = async() => {
+        console.log("NODE_ENV", process.env.NODE_ENV);
+        return {
+            status: 200,
+            ok: true,
+            data: defaultLocale,
+        };
+    }
+
     return (
         <>
             <GlobalStyle />
             <PaperProviver colorSchemeName={colorSchema}>
                 <ToastProvider>
-                    <Viewport>
-                        {children}
-                    </Viewport>
+                    <LocaleProvider
+                        locale="en-us"
+                        isInit={true}
+                        fetchLocaleJson={_handleFetchJSON}
+                    >
+                        <Viewport>
+                            {children}
+                        </Viewport>
+                    </LocaleProvider>
                 </ToastProvider>
             </PaperProviver>
         </>

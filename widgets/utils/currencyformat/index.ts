@@ -16,7 +16,7 @@ const formatCurrency = (amount, locale = "en-US", currency = "USD", currencyDisp
 const localeCurrencyFormat = (
     amount = 0,
     locale = "en-GB",
-    currencyCode = "MYR",
+    currencyCode = "USD",
     currencyDisplay = "symbol"
 ) => {
     const formatter = new Intl.NumberFormat(locale, {

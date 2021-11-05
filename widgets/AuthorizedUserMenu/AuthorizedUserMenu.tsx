@@ -63,6 +63,7 @@ const AuthorizedUserMenu = ({
                     onPress={openMenu}
                 />
             }
+            alignRight={true}
         >
             {loggedInUser?.userId &&
                 <Menu.Item

@@ -1,4 +1,9 @@
+import LocaleProvider from "./LocaleProvider";
 import useTranslation from "./useTranslation";
 import withTranslation from "./withTranslation";
 
-export { useTranslation, withTranslation };
+export {
+    LocaleProvider as default,
+    useTranslation,
+    withTranslation,
+};

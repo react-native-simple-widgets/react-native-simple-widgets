@@ -40,7 +40,7 @@ const SwiperFlatListExample = () => {
 
 const styles = StyleSheet.create({
     image: {
-        width,
+        width: width / 2,
         resizeMode: 'cover',
         justifyContent: 'flex-end',
     },
@@ -53,12 +53,7 @@ const styles = StyleSheet.create({
 
 storiesOf("SwiperFlatList", module)
     .addDecorator(withKnobs)
-    .add("Default", () => {
-        return (
-            <SwiperFlatListExample
-            />
-        )
-    })
+    .add("Default", () => <SwiperFlatListExample />)
     .add("Loop", () => {
         return (
             <SwiperFlatList

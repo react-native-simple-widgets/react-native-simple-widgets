@@ -17,7 +17,7 @@ const FieldValidator = (props: Props) => {
 
     const {
         fieldComponent: FieldComponent,
-        touched,
+        // touched,
         values,
         onChange,
         onBlur,
