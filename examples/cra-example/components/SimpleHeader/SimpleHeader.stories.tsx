@@ -14,6 +14,11 @@ import { Title } from "react-native-simple-elements/components/Text";
 import DropdownInput from "react-native-simple-widgets/widgets/DropdownInput";
 import TextInput2 from "react-native-simple-elements/components/TextInput2";
 import Button from "react-native-simple-elements/components/Button";
+import AuthorizedUserMenu from "react-native-simple-widgets/widgets/AuthorizedUserMenu";
+import SettingsIcon from "@mdi/svg/svg/cog.svg";
+import AccountIcon from "@mdi/svg/svg/account.svg";
+import IconButton from "react-native-simple-elements/components/IconButton";
+import { ThemeContext } from "styled-components";
 
 const viewportParams = {
     viewports: {
@@ -47,19 +52,24 @@ const items = [
 const SimpleHeaderExample = (props) => {
     const title = text("title", "Title");
 
+    const { colors } = React.useContext(ThemeContext);
+
     return (
         <>
             <SimpleHeader
                 backButtonIcon={MenuIcon}
                 onBackActionPress={onBackButtonPress}
                 title={title}
-                loggedInUser={{
-                    firstName: "Username",
-                    avatarUrl: "https://via.placeholder.com/350",
-                }}
                 onLoginClick={action("onLoginClick")}
-                onViewProfileClick={action("onViewProfileClick")}
-                onLogoutClick={action("onLogoutClick")}
+                desktopLeft={() => (
+                    <>
+                        <IconButton
+                            icon={HomeIcon}
+                            color={colors.white}
+                        />
+                        <Title style={{ color: colors.white }}>SimpleHeader</Title>
+                    </>
+                )}
             />
             <ScrollviewViewport>
                 {(Array.isArray(items) && items.length > 0) &&
@@ -84,20 +94,24 @@ const SimpleHeaderExample = (props) => {
 const WithContainerFluidExample = (props) => {
     const title = text("title", "Title");
 
+    const { colors } = React.useContext(ThemeContext);
+
     return (
         <>
             <SimpleHeader
                 backButtonIcon={MenuIcon}
                 onBackActionPress={onBackButtonPress}
                 title={title}
-                loggedInUser={{
-                    firstName: "Username",
-                    avatarUrl: "https://via.placeholder.com/350",
-                }}
-                onLoginClick={action("onLoginClick")}
-                onViewProfileClick={action("onViewProfileClick")}
-                onLogoutClick={action("onLogoutClick")}
                 fluid={true}
+                desktopLeft={() => (
+                    <>
+                        <IconButton
+                            icon={HomeIcon}
+                            color={colors.white}
+                        />
+                        <Title style={{ color: colors.white }}>SimpleHeader</Title>
+                    </>
+                )}
             />
             <ScrollviewViewport>
                 {(Array.isArray(items) && items.length > 0) &&
@@ -120,40 +134,78 @@ const WithContainerFluidExample = (props) => {
 }
 
 const WithLoggedInUserExample = () => {
+
+    const { colors } = React.useContext(ThemeContext);
+
     return(
         <>
             <SimpleHeader
                 backButtonIcon={MenuIcon}
                 onBackActionPress={onBackButtonPress}
                 title={"with loggedInUser"}
-                loggedInUser={{
-                    userId: "12345",
-                    firstName: "Username",
-                    avatarUrl: "https://via.placeholder.com/350",
-                }}
-                onLoginClick={action("onLoginClick")}
-                onViewProfileClick={action("onViewProfileClick")}
-                onLogoutClick={action("onLogoutClick")}
+                desktopLeft={() => (
+                    <>
+                        <IconButton
+                            icon={HomeIcon}
+                            color={colors.white}
+                        />
+                        <Title style={{ color: colors.white }}>SimpleHeader</Title>
+                    </>
+                )}
+                desktopRight={() => (
+                    <>
+                        <AuthorizedUserMenu
+                            circle={true}
+                            loggedInUser={{
+                                userId: "123",
+                                firstName: "Username",
+                                avatarUrl: "https://via.placeholder.com/350",
+                            }}
+                            onViewProfileClick={action("onViewProfileClick")}
+                            onLogoutClick={action("onLogoutClick")}
+                            userMenuItems={[
+                                {
+                                    label: "Profile",
+                                    icon: AccountIcon,
+                                    url: "/profile",
+                                },
+                                {
+                                    label: "Settings",
+                                    icon: SettingsIcon,
+                                    url: "/settings",
+                                },
+                            ]}
+                            onUserMenuItemPress={() => {
+                                alert("MenuItem pressed");
+                            }}
+                        />
+                    </>
+                )}
             />
         </>
     )
 }
 
 const WithScrollbarSizeExample = () => {
+
+    const { colors } = React.useContext(ThemeContext);
+
     return(
         <>
             <SimpleHeader
                 backButtonIcon={MenuIcon}
                 onBackActionPress={onBackButtonPress}
                 title={"with loggedInUser"}
-                loggedInUser={{
-                    userId: "12345",
-                    firstName: "Username",
-                    avatarUrl: "https://via.placeholder.com/350",
-                }}
+                desktopLeft={() => (
+                    <>
+                        <IconButton
+                            icon={HomeIcon}
+                            color={colors.white}
+                        />
+                        <Title style={{ color: colors.white }}>SimpleHeader</Title>
+                    </>
+                )}
                 shouldCheckScrollbarSize={true}
-                onLoginClick={action("onLoginClick")}
-                onLogoutClick={action("onLogoutClick")}
             />
         </>
     )
@@ -321,19 +373,24 @@ const WithDesktopRenderAndSearchExample = () => {
 }
 
 const PlaygroundExample = () => {
+
+    const { colors } = React.useContext(ThemeContext);
+
     return(
         <>
             <SimpleHeader
                 backButtonIcon={MenuIcon}
                 onBackActionPress={onBackButtonPress}
                 title={"with loggedInUser"}
-                loggedInUser={{
-                    userId: "12345",
-                    firstName: "Username",
-                    avatarUrl: "https://via.placeholder.com/350",
-                }}
-                onLoginClick={action("onLoginClick")}
-                onLogoutClick={action("onLogoutClick")}
+                desktopLeft={() => (
+                    <>
+                        <IconButton
+                            icon={HomeIcon}
+                            color={colors.white}
+                        />
+                        <Title style={{ color: colors.white }}>SimpleHeader</Title>
+                    </>
+                )}
             />
         </>
     )

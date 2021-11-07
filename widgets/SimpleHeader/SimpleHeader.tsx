@@ -2,16 +2,12 @@ import * as React from "react";
 import styled from "styled-components/native";
 import useScrollbarSize from "react-scrollbar-size";
 import {
-    AppbarAction,
     AppbarBackAction,
     AppbarContent,
     AppbarHeader,
 } from "react-native-simple-elements/components/Appbar";
 import useScreenSize from "react-native-simple-elements/components/Container/utils/useScreenSize";
-import AuthorizedUserMenu from "../AuthorizedUserMenu";
-import { MenuItemProps } from "../AuthorizedUserMenu/AuthorizedUserMenu";
 import HomeIcon from "@mdi/svg/svg/home.svg";
-import AccountIcon from "@mdi/svg/svg/account.svg";
 import { View } from "react-native";
 import Container, { ContainerFluid, FlexRowContainer } from "react-native-simple-elements/components/Container";
 
@@ -38,14 +34,7 @@ type Props = {
     desktopRight?: (props?) => React.ReactNode,
     onHomeActionPress?: () => void,
     onBackActionPress?: () => void,
-    loggedInUser?: Record<string, any>;
-    isUserIconCircle?: boolean,
     shouldCheckScrollbarSize?: boolean,
-    onLoginClick?: () => void,
-    onViewProfileClick?: () => void,
-    onLogoutClick?: () => void,
-    userMenuItems?: MenuItemProps[],
-    onUserMenuItemPress?: (item?) => void,
     fluid?: boolean,
 };
 
@@ -55,31 +44,22 @@ const defaultProps = {
     fluid: false,
 };
 
-const SimpleHeader = (props: Props) => {
-
-    const {
-        title,
-        subtitle,
-        mobileLeft,
-        mobileContent,
-        mobileRight,
-        desktopLeft,
-        desktopContent,
-        desktopRight,
-        showBackIcon,
-        backButtonIcon,
-        onHomeActionPress,
-        onBackActionPress,
-        loggedInUser,
-        isUserIconCircle,
-        shouldCheckScrollbarSize,
-        onLoginClick,
-        onViewProfileClick,
-        onLogoutClick,
-        userMenuItems,
-        onUserMenuItemPress,
-        fluid,
-    } = props;
+const SimpleHeader = ({
+    title,
+    subtitle,
+    mobileLeft,
+    mobileContent,
+    mobileRight,
+    desktopLeft,
+    desktopContent,
+    desktopRight,
+    showBackIcon,
+    backButtonIcon,
+    onHomeActionPress,
+    onBackActionPress,
+    shouldCheckScrollbarSize,
+    fluid,
+}: Props) => {
 
     const ContainerComponent = fluid ? ContainerFluid : Container;
 
@@ -95,12 +75,6 @@ const SimpleHeader = (props: Props) => {
             if (typeof onHomeActionPress === "function") {
                 onHomeActionPress();
             }
-        }
-    };
-
-    const _handleLoginClick = () => {
-        if (typeof onLoginClick === "function") {
-            onLoginClick();
         }
     };
 
@@ -168,20 +142,6 @@ const SimpleHeader = (props: Props) => {
                         }
                         {isMobileView && mobileRight ? mobileRight() : null}
                         {!isMobileView && desktopRight ? desktopRight() : null}
-                        {loggedInUser?.userId ?
-                            <AuthorizedUserMenu
-                                circle={isUserIconCircle}
-                                loggedInUser={loggedInUser}
-                                onViewProfileClick={onViewProfileClick}
-                                onLogoutClick={onLogoutClick}
-                                userMenuItems={userMenuItems}
-                                onUserMenuItemPress={onUserMenuItemPress}
-                            /> :
-                            <AppbarAction
-                                icon={AccountIcon}
-                                onPress={_handleLoginClick}
-                            />
-                        }
                     </FlexRowContainer>
                 </ContainerComponent>
             </AppbarHeader>

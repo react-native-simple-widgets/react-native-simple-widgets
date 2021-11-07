@@ -12929,7 +12929,7 @@ react-native-simple-elements@1.5.0-develop.11:
     react-native-linear-gradient "^2.5.6"
 
 "react-native-simple-widgets@file:../../react-native-simple-widgets":
-  version "1.4.1-develop.6"
+  version "1.4.1-develop.7"
   dependencies:
     "@react-native-picker/picker" "^1.16.1"
     calendarize "^1.1.1"
