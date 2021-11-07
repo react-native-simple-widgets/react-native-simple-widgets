@@ -220,6 +220,9 @@ const WithScrollbarSizeExample = () => {
 }
 
 const WithMobileRenderExample = () => {
+
+    const { colors } = React.useContext(ThemeContext);
+
     return(
         <>
             <SimpleHeader
@@ -239,21 +242,47 @@ const WithMobileRenderExample = () => {
                         <AppbarAction
                             icon={BellIcon}
                         />
+                        <AuthorizedUserMenu
+                            circle={true}
+                            avatarSize={36}
+                            avatarStyle={{
+                                backgroundColor: colors.white,
+                            }}
+                            loggedInUser={{
+                                userId: "123",
+                                firstName: "Username",
+                                fullName: "Username",
+                                avatarUrl: "https://via.placeholder.com/350",
+                            }}
+                            onViewProfileClick={action("onViewProfileClick")}
+                            onLogoutClick={action("onLogoutClick")}
+                            userMenuItems={[
+                                {
+                                    label: "Profile",
+                                    icon: AccountIcon,
+                                    url: "/profile",
+                                },
+                                {
+                                    label: "Settings",
+                                    icon: SettingsIcon,
+                                    url: "/settings",
+                                },
+                            ]}
+                            onUserMenuItemPress={() => {
+                                alert("MenuItem pressed");
+                            }}
+                        />
                     </>
                 )}
-                loggedInUser={{
-                    userId: "12345",
-                    firstName: "Username",
-                    avatarUrl: "https://via.placeholder.com/350",
-                }}
-                onLoginClick={action("onLoginClick")}
-                onLogoutClick={action("onLogoutClick")}
             />
         </>
     )
 }
 
 const WithDesktopRenderExample = () => {
+
+    const { colors } = React.useContext(ThemeContext);
+
     return(
         <>
             <SimpleHeader
@@ -273,15 +302,38 @@ const WithDesktopRenderExample = () => {
                         <AppbarAction
                             icon={BellIcon}
                         />
+                        <AuthorizedUserMenu
+                            circle={true}
+                            avatarSize={36}
+                            avatarStyle={{
+                                backgroundColor: colors.white,
+                            }}
+                            loggedInUser={{
+                                userId: "123",
+                                firstName: "Username",
+                                fullName: "Username",
+                                avatarUrl: "https://via.placeholder.com/350",
+                            }}
+                            onViewProfileClick={action("onViewProfileClick")}
+                            onLogoutClick={action("onLogoutClick")}
+                            userMenuItems={[
+                                {
+                                    label: "Profile",
+                                    icon: AccountIcon,
+                                    url: "/profile",
+                                },
+                                {
+                                    label: "Settings",
+                                    icon: SettingsIcon,
+                                    url: "/settings",
+                                },
+                            ]}
+                            onUserMenuItemPress={() => {
+                                alert("MenuItem pressed");
+                            }}
+                        />
                     </>
                 )}
-                loggedInUser={{
-                    userId: "12345",
-                    firstName: "Username",
-                    avatarUrl: "https://via.placeholder.com/350",
-                }}
-                onLoginClick={action("onLoginClick")}
-                onLogoutClick={action("onLogoutClick")}
             />
         </>
     )
@@ -368,13 +420,6 @@ const WithDesktopRenderAndSearchExample = () => {
                         </View>
                     </>
                 )}
-                loggedInUser={{
-                    userId: "12345",
-                    firstName: "Username",
-                    avatarUrl: "https://via.placeholder.com/350",
-                }}
-                onLoginClick={action("onLoginClick")}
-                onLogoutClick={action("onLogoutClick")}
             />
         </>
     )

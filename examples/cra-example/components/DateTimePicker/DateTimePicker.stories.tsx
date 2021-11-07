@@ -43,7 +43,7 @@ const DateTimePickerExample = () => {
         >
             <Button title="Show Date Picker" onPress={showDatePicker} />
             <DateTimePicker
-                visible={isDatePickerVisible}
+                isVisible={isDatePickerVisible}
                 mode="date"
                 onConfirm={handleConfirm}
                 onCancel={hideDatePicker}
