@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import MultiPicker from "../../SelectPicker/mweb/MultiPicker";
 import Picker from "../../SelectPicker";
 import IDatePickerProps from "./IDateTimePickerProps";

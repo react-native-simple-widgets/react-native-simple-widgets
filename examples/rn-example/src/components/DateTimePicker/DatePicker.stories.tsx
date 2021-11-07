@@ -1,6 +1,6 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
-import { DatePicker } from ".";
+import DateTimePicker from 'react-native-simple-widgets/widgets/DateTimePicker';
 
 const baseProps = {
     dateTimePickerProps: {
@@ -15,8 +15,9 @@ const baseProps = {
 storiesOf("DateTimePicker", module)
     .add("Default", () => {
         return (
-            <DatePicker
+            <DateTimePicker
                 {...baseProps}
+                isVisible={true}
             />
         )
     })
