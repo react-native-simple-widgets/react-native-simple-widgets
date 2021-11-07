@@ -60,7 +60,6 @@ const SimpleHeaderExample = (props) => {
                 backButtonIcon={MenuIcon}
                 onBackActionPress={onBackButtonPress}
                 title={title}
-                onLoginClick={action("onLoginClick")}
                 desktopLeft={() => (
                     <>
                         <IconButton
@@ -153,13 +152,22 @@ const WithLoggedInUserExample = () => {
                     </>
                 )}
                 desktopRight={() => (
-                    <>
+                    <View
+                        style={{
+                            justifyContent: "center",
+                        }}
+                    >
                         <AuthorizedUserMenu
                             circle={true}
+                            avatarSize={36}
+                            avatarStyle={{
+                                backgroundColor: colors.white,
+                            }}
                             loggedInUser={{
                                 userId: "123",
                                 firstName: "Username",
-                                avatarUrl: "https://via.placeholder.com/350",
+                                fullName: "Username",
+                                // avatarUrl: "https://via.placeholder.com/350",
                             }}
                             onViewProfileClick={action("onViewProfileClick")}
                             onLogoutClick={action("onLogoutClick")}
@@ -179,7 +187,7 @@ const WithLoggedInUserExample = () => {
                                 alert("MenuItem pressed");
                             }}
                         />
-                    </>
+                    </View>
                 )}
             />
         </>
