@@ -1,7 +1,7 @@
 import { Platform } from "react-native";
 import { DateTimePickerModal as DateTimePickerAndroid } from "./DateTimePicker.android";
 import { DateTimePickerModal as DateTimePickerIOS } from "./DateTimePicker.ios";
-import DateTimePickerMWeb from "./mweb";
+import { DateTimePickerWeb as DateTimePickerMWeb } from "./DateTimePicker.web";
 
 const DateTimePickerModal = Platform.select({
     android: DateTimePickerAndroid as any,
