@@ -1,6 +1,6 @@
 {
     "name": "react-native-simple-widgets",
-    "version": "1.4.1-develop.12",
+    "version": "1.4.1-develop.13",
     "description": "",
     "main": "dist/commonjs/index",
     "module": "dist/module/index",
