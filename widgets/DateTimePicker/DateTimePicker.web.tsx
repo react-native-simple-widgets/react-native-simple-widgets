@@ -75,6 +75,7 @@ type Props = {
     onHide?: (flag, date?) => void,
     maximumDate?: Date,
     minimumDate?: Date,
+    use12Hours?: boolean,
 };
 
 export class DateTimePickerWeb extends React.PureComponent<Props> {
@@ -87,6 +88,7 @@ export class DateTimePickerWeb extends React.PureComponent<Props> {
         isDarkModeEnabled: undefined,
         isVisible: false,
         pickerContainerStyleIOS: {},
+        use12Hours: false,
     };
 
     state = {
