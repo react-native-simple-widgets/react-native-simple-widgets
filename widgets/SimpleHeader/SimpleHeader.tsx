@@ -9,7 +9,7 @@ import {
 import useScreenSize from "react-native-simple-elements/components/Container/utils/useScreenSize";
 import HomeIcon from "@mdi/svg/svg/home.svg";
 import { View } from "react-native";
-import Container, { ContainerFluid, FlexRowContainer } from "react-native-simple-elements/components/Container";
+import Container, { ContainerFluid, FlexItem } from "react-native-simple-elements/components/Container";
 
 const HeaderContainer = styled.View({
     zIndex: 3,
@@ -90,59 +90,53 @@ const SimpleHeader = ({
                 }}
             >
                 <ContainerComponent>
-                    <FlexRowContainer>
-                        {isMobileView ?
-                            <>
-                                {mobileLeft ? mobileLeft() :
-                                    <AppbarBackAction
-                                        icon={showBackIcon ? backButtonIcon : HomeIcon}
-                                        onPress={_handleBackActionPress}
-                                    />
-                                }
-                            </>
-                            :
-                            null
-                        }
-                        {!isMobileView && desktopLeft ?
-                            <>
-                                <DesktopLeftContentWrapper>
-                                    {desktopLeft ? desktopLeft() : null}
-                                </DesktopLeftContentWrapper>
-                            </>
-                            :
-                            null
-                        }
-                        {isMobileView ?
-                            <>
-                                {mobileContent ? mobileContent() :
-                                    <AppbarContent
-                                        title={title}
-                                        subtitle={subtitle}
-                                        style={{
-                                            justifyContent: "center",
-                                        }}
-                                    />
-                                }
-                            </>
-                            :
-                            null
-                        }
-                        {!isMobileView ?
-                            <View
-                                style={{
-                                    flex: 1,
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                }}
-                            >
-                                {desktopContent ? desktopContent() : null}
-                            </View>
-                            :
-                            null
-                        }
-                        {isMobileView && mobileRight ? mobileRight() : null}
-                        {!isMobileView && desktopRight ? desktopRight() : null}
-                    </FlexRowContainer>
+                    {isMobileView ?
+                        <FlexItem
+                            left={() => mobileLeft ? mobileLeft() :
+                                <AppbarBackAction
+                                    icon={showBackIcon ? backButtonIcon : HomeIcon}
+                                    onPress={_handleBackActionPress}
+                                />
+                            }
+                            content={() => mobileContent ? mobileContent() :
+                                <AppbarContent
+                                    title={title}
+                                    subtitle={subtitle}
+                                    style={{
+                                        justifyContent: "center",
+                                    }}
+                                />
+                            }
+                            right={() => mobileRight ? mobileRight() : null}
+                        />
+                        : null
+                    }
+                    {!isMobileView ?
+                        <FlexItem
+                            left={() => desktopLeft ?
+                                <>
+                                    <DesktopLeftContentWrapper>
+                                        {desktopLeft ? desktopLeft() : null}
+                                    </DesktopLeftContentWrapper>
+                                </>
+                                :
+                                null
+                            }
+                            content={() =>
+                                <View
+                                    style={{
+                                        flex: 1,
+                                        flexDirection: "row",
+                                        alignItems: "center",
+                                    }}
+                                >
+                                    {desktopContent ? desktopContent() : null}
+                                </View>
+                            }
+                            right={() => desktopRight ? desktopRight() : null}
+                        />
+                        : null
+                    }
                 </ContainerComponent>
             </AppbarHeader>
         </HeaderContainer>

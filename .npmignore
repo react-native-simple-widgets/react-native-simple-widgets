@@ -5,4 +5,6 @@ tsconfig.json
 buildScripts
 .editorconfig
 
+react-native-simple-widgets
+
 **.test.tsx

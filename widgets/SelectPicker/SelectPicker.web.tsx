@@ -162,15 +162,20 @@ export class SelectPicker extends React.PureComponent<Props> {
                     ]}
                 >
                     <HeaderComponent label={headerText} />
-                    <PickerComponent
-                        // display="spinner"
-                        {...otherProps}
-                        selectedValue={this.state.currentDate}
-                        // onChange={this.handleChange}
-                        onValueChange={this.handleChange}
-                    >
-                        {children}
-                    </PickerComponent>
+                    <View style={{
+                        flex: 1,
+                        flexDirection: "row",
+                    }}>
+                        <PickerComponent
+                            // display="spinner"
+                            {...otherProps}
+                            selectedValue={this.state.currentDate}
+                            // onChange={this.handleChange}
+                            onValueChange={this.handleChange}
+                        >
+                            {children}
+                        </PickerComponent>
+                    </View>
                     <ConfirmButtonComponent
                         isDarkModeEnabled={_isDarkModeEnabled}
                         onPress={this.handleConfirm}

@@ -12,7 +12,7 @@ module.exports = {
         ["@semantic-release/exec", {
             // "prepareCmd": "echo -n ${nextRelease.version} > VERSION",
             "prepareCmd": "node ./buildScripts/bumpVersion.js ${nextRelease.version}",
-            "successCmd": "sh ./buildScripts/postRelease.sh ${nextRelease.version}",
+            // "successCmd": "sh ./buildScripts/postRelease.sh ${nextRelease.version}",
         }]
     ]
 }

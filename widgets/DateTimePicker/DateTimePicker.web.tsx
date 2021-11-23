@@ -6,7 +6,7 @@ import {
     View,
     Appearance,
 } from "react-native";
-import DateTimePicker from "./mweb2/DateTimePicker";
+import DateTimePicker from "./mweb/DateTimePicker";
 import Modal from "./Modal";
 import { isIphoneX } from "./utils";
 
