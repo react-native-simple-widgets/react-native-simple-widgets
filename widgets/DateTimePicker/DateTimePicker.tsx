@@ -1,3 +1,3 @@
-import DateTimePickerMWeb from "./mweb2/DateTimePicker";
+import DateTimePickerMWeb from "./mweb/DateTimePicker";
 
 export default DateTimePickerMWeb;

@@ -1,4 +1,9 @@
-export { SwiperFlatList } from "./SwiperFlatList/SwiperFlatList";
+import { SwiperFlatList } from "./SwiperFlatList/SwiperFlatList";
+import { Pagination } from "./Pagination/Pagination";
 export type { SwiperFlatListProps } from "./SwiperFlatList/SwiperFlatListProps";
-export { Pagination } from "./Pagination/Pagination";
 export type { PaginationProps } from "./Pagination/PaginationProps";
+
+export {
+    SwiperFlatList as default,
+    Pagination,
+}
