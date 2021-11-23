@@ -29,7 +29,7 @@
         "react-native-pager-view": "^5.4.4",
         "react-native-safe-area-context": "^3.3.2",
         "react-native-screen": "^1.0.1",
-        "react-native-simple-elements": "1.4.0-develop.4",
+        "react-native-simple-elements": "1.5.0-develop.11",
         "react-native-simple-toast": "^1.1.3",
         "react-native-simple-widgets": "file:../../react-native-simple-widgets",
         "react-native-svg": "^12.1.0",

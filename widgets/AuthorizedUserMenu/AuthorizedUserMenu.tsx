@@ -1,7 +1,22 @@
 import * as React from "react";
+import { AvatarText } from "react-native-simple-elements/components/Avatar";
 import Menu from "react-native-simple-elements/components/Menu";
 import ImageButton from "react-native-simple-elements/components/ImageButton";
 import Divider from "react-native-simple-elements/components/Divider";
+import { StyleProp, TextStyle, ViewStyle } from "react-native";
+import TouchableRipple from "react-native-simple-elements/components/TouchableRipple";
+
+const parseAvatarText = (fullName) => {
+    const parts = (fullName || "").split(" ");
+    let text = "";
+    if (parts.length >= 1) {
+        text = text + parts[0].charAt(0).toUpperCase();
+    }
+    if (parts.length >= 2) {
+        text = text + parts[1].charAt(0).toUpperCase();
+    }
+    return text;
+}
 
 export type MenuItemProps = {
     label: string,
@@ -11,6 +26,9 @@ export type MenuItemProps = {
 
 type Props = {
     circle?: boolean,
+    avatarSize?: number,
+    avatarStyle?: StyleProp<ViewStyle>,
+    avatarLabelStyle?: StyleProp<TextStyle>,
     loggedInUser?: Record<string, any>,
     onViewProfileClick?: () => void,
     onLogoutClick?: () => void,
@@ -25,6 +43,9 @@ const defaultProps = {
 const AuthorizedUserMenu = ({
     loggedInUser,
     circle,
+    avatarSize,
+    avatarStyle,
+    avatarLabelStyle,
     onViewProfileClick,
     onLogoutClick,
     userMenuItems,
@@ -56,12 +77,23 @@ const AuthorizedUserMenu = ({
         <Menu
             visible={isOpen}
             onDismiss={closeMenu}
-            anchor={
+            anchor={loggedInUser?.userId && avatarUrl?
                 <ImageButton
                     source={{ uri: avatarUrl }}
                     circle={circle}
                     onPress={openMenu}
                 />
+                :
+                <TouchableRipple
+                    onPress={openMenu}
+                >
+                    <AvatarText
+                        label={parseAvatarText(loggedInUser?.fullName)}
+                        size={avatarSize}
+                        style={avatarStyle}
+                        labelStyle={avatarLabelStyle}
+                    />
+                </TouchableRipple>
             }
             alignRight={true}
         >
@@ -78,8 +110,7 @@ const AuthorizedUserMenu = ({
                     }}
                 />
             }
-            <Divider
-            />
+            <Divider />
             {Array.isArray(userMenuItems) && userMenuItems.length > 0 ?
                 userMenuItems.map((item, index) => {
                     return (
@@ -93,8 +124,7 @@ const AuthorizedUserMenu = ({
                 })
                 : null
             }
-            <Divider
-            />
+            <Divider />
             {loggedInUser?.userId &&
                 <Menu.Item
                     title="Logout"
