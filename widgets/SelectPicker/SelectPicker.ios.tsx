@@ -6,8 +6,7 @@ import {
     View,
     Appearance,
 } from "react-native";
-import dfSet from "date-fns/set";
-import DateTimePicker from "./mweb/DateTimePicker";
+import { Picker } from "@react-native-picker/picker";
 import Modal from "./Modal";
 import { isIphoneX } from "./utils";
 
@@ -24,36 +23,6 @@ export const HIGHLIGHT_COLOR_LIGHT = "#ebebeb";
 export const TITLE_FONT_SIZE = 20;
 export const TITLE_COLOR = "#8f8f8f";
 
-const convertValuesToDate = (cur, values, index, use12Hours) => {
-    let newDate = cur;
-    switch (index) {
-        case 0:
-            newDate = dfSet(newDate, { year: values[index] });
-            break;
-        case 1:
-            newDate = dfSet(newDate, { month: values[index] });
-            break;
-        case 2:
-            newDate = dfSet(newDate, { date: values[index] });
-            break;
-        case 3:
-            newDate = dfSet(newDate, { hours: use12Hours && newDate.getHours() >= 12 ? parseInt(values[index], 10) + 12 : values[index] });
-            break;
-        case 4:
-            newDate = dfSet(newDate, { minutes: values[index] });
-            break;
-        case 5:
-            if (parseInt(values[index], 10) === 0) {
-                newDate = dfSet(newDate, { hours: newDate.getHours() >= 12 ? newDate.getHours() - 12 : newDate.getHours() });
-            } else {
-                newDate = dfSet(newDate, { hours: newDate.getHours() + 12  });
-            }
-            break;
-    }
-
-    return newDate;
-}
-
 type Props = {
     cancelTextIOS?: string,
     confirmTextIOS?: string,
@@ -62,7 +31,7 @@ type Props = {
     customHeaderIOS?: React.ReactElement,
     customPickerIOS?: React.ReactElement,
     date?: Date,
-    mode?: string,
+    mode?: "dialog" | "dropdown",
     headerTextIOS?: string,
     modalPropsIOS?: any,
     modalStyleIOS?: any,
@@ -77,7 +46,7 @@ type Props = {
     minimumDate?: Date,
 };
 
-export class DateTimePickerWeb extends React.PureComponent<Props> {
+export class DateTimePickerModal extends React.PureComponent<Props> {
 
     static defaultProps = {
         cancelTextIOS: "Cancel",
@@ -121,11 +90,11 @@ export class DateTimePickerWeb extends React.PureComponent<Props> {
         this.setState({ isPickerVisible: false });
     };
 
-    handleChange = (date, index?) => {
+    handleChange = (event, date) => {
         if (this.props.onChange) {
             this.props.onChange(date);
         }
-        this.setState({ currentDate: convertValuesToDate(this.state.currentDate, date, index, this.props.use12Hours) });
+        this.setState({ currentDate: date });
     };
 
     render() {
@@ -164,7 +133,7 @@ export class DateTimePickerWeb extends React.PureComponent<Props> {
         //   const HeaderComponent = customHeaderIOS || Header;
         const HeaderComponent = Header;
         //   const PickerComponent = customPickerIOS || DateTimePicker;
-        const PickerComponent = DateTimePicker;
+        const PickerComponent = Picker;
 
 
         const themedContainerStyle = _isDarkModeEnabled
@@ -172,9 +141,7 @@ export class DateTimePickerWeb extends React.PureComponent<Props> {
             : pickerStyles.containerLight;
 
         const headerText =
-            headerTextIOS || (this.props.mode === "time"
-                ? "Pick a time"
-                : "Pick a date");
+            headerTextIOS || "Pick an options";
 
         return (
             <Modal
@@ -195,8 +162,7 @@ export class DateTimePickerWeb extends React.PureComponent<Props> {
                     <PickerComponent
                         // display="spinner"
                         {...otherProps}
-                        date={this.state.currentDate}
-                        // onChange={this.handleChange}
+                        selectedValue={this.state.currentDate}
                         onValueChange={this.handleChange}
                     />
                     <ConfirmButtonComponent

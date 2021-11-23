@@ -30,7 +30,7 @@ type Props = {
     customConfirmButtonIOS?: React.ReactElement,
     customHeaderIOS?: React.ReactElement,
     customPickerIOS?: React.ReactElement,
-    date?: Date,
+    selectedValue?: Date,
     mode?: string,
     headerTextIOS?: string,
     modalPropsIOS?: any,
@@ -44,6 +44,7 @@ type Props = {
     onHide?: (flag, date?) => void,
     maximumDate?: Date,
     minimumDate?: Date,
+    options: any[],
 };
 
 export class SelectPicker extends React.PureComponent<Props> {
@@ -59,7 +60,7 @@ export class SelectPicker extends React.PureComponent<Props> {
     };
 
     state = {
-        currentDate: this.props.date,
+        currentDate: this.props.selectedValue,
         isPickerVisible: this.props.isVisible,
     };
 
@@ -67,7 +68,7 @@ export class SelectPicker extends React.PureComponent<Props> {
 
     static getDerivedStateFromProps(props, state) {
         if (props.isVisible && !state.isPickerVisible) {
-            return { currentDate: props.date, isPickerVisible: true };
+            return { currentDate: props.selectedValue, isPickerVisible: true };
         }
         return null;
     }
@@ -97,6 +98,13 @@ export class SelectPicker extends React.PureComponent<Props> {
         this.setState({ currentDate: date });
     };
 
+    handleScrollChange = (date, arg2?) => {
+        if (this.props.onChange) {
+            this.props.onChange(date);
+        }
+        this.setState({ currentDate: date });
+    };
+
     render() {
         const {
             cancelTextIOS,
@@ -116,7 +124,7 @@ export class SelectPicker extends React.PureComponent<Props> {
             // onConfirm,
             // onChange,
             // onHide,
-            children,
+            options,
             ...otherProps
         } = this.props;
         const isAppearanceModuleAvailable = !!(
@@ -172,8 +180,13 @@ export class SelectPicker extends React.PureComponent<Props> {
                             selectedValue={this.state.currentDate}
                             // onChange={this.handleChange}
                             onValueChange={this.handleChange}
+                            onScrollChange={this.handleScrollChange}
                         >
-                            {children}
+                            {options.map(item => (
+                                <PickerComponent.Item key={item.value} value={item.value}>
+                                    {item.label}
+                                </PickerComponent.Item>
+                            ))}
                         </PickerComponent>
                     </View>
                     <ConfirmButtonComponent
