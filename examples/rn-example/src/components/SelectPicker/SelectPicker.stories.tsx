@@ -32,6 +32,10 @@ const MobileViewExample = () => {
         setDatePickerVisibility(false);
     };
 
+    const handleHide = (hide) => {
+        // do something
+    }
+
     return (
         <View
             style={{
@@ -43,6 +47,7 @@ const MobileViewExample = () => {
                 isVisible={isDatePickerVisible}
                 onConfirm={handleConfirm}
                 onCancel={hideDatePicker}
+                onHide={handleHide}
                 data-testid="selectpicker"
                 options={items}
             />

@@ -5,12 +5,12 @@ import { Picker } from "@react-native-picker/picker";
 const areEqual = (prevProps, nextProps) => {
     return (
         prevProps.isVisible === nextProps.isVisible &&
-        prevProps.date.getTime() === nextProps.date.getTime()
+        prevProps.selectedValue === nextProps.selectedValue
     );
 };
 
 type Props = {
-    date?: Date,
+    selectedValue?: Date,
     mode?: string,
     isVisible?: boolean,
     onCancel: () => void,
@@ -22,13 +22,13 @@ type Props = {
 };
 
 const SelectPickerModal = React.memo((props: Props) => {
-    const { date, mode, isVisible, onCancel, onConfirm, onHide, options, ...otherProps } = props;
-    const currentDateRef = React.useRef(date);
+    const { selectedValue, mode, isVisible, onCancel, onConfirm, onHide, options, ...otherProps } = props;
+    const currentDateRef = React.useRef(selectedValue);
     const [currentMode, setCurrentMode] = React.useState(null);
 
     React.useEffect(() => {
         if (isVisible && currentMode === null) {
-            setCurrentMode(mode === "time" ? "time" : "date");
+            setCurrentMode(mode === "dropdown" ? "dropdown" : "dialog");
         } else if (!isVisible) {
             setCurrentMode(null);
         }
@@ -65,7 +65,7 @@ const SelectPickerModal = React.memo((props: Props) => {
         <Picker
             {...otherProps}
             mode={currentMode}
-            selectedValue={date}
+            selectedValue={selectedValue}
             onValueChange={handleChange}
         >
             {options.map((item, index) => (
