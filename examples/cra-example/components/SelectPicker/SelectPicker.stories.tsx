@@ -1,7 +1,7 @@
 import * as React from "react";
 import { View, Text, Button } from "react-native";
 import { storiesOf } from "@storybook/react";
-import SelectPicker, { SelectPickerMWeb } from "react-native-simple-widgets/widgets/SelectPicker";
+import SelectPicker from "react-native-simple-widgets/widgets/SelectPicker";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import { withKnobs } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
@@ -86,7 +86,7 @@ const MobileViewExample = () => {
             }}
         >
             <Button title="Show Picker" onPress={showDatePicker} />
-            <SelectPickerMWeb
+            <SelectPicker
                 isVisible={isDatePickerVisible}
                 onConfirm={handleConfirm}
                 onCancel={hideDatePicker}

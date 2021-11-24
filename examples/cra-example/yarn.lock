@@ -2059,11 +2059,6 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
   integrity sha512-rk4sWFsmtOw8oyx8SD3KSvawwaK7gRBSEIy2TAwURyGt+3TizssXP1r8nx3zY+R7v2vYYHXZ+k2/GULAT/bcaQ==
 
-"@react-native-picker/picker@^1.16.1":
-  version "1.16.8"
-  resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-1.16.8.tgz#2126ca54d4a5a3e9ea5e3f39ad1e6643f8e4b3d4"
-  integrity sha512-pacdQDX6V6EmjF+HoiIh6u++qx4mTK0WnhgUHRc01B+Qt5eoeUwseBqmqfTSXTx/aHDEd6PiIw7UGvKgFoqgFQ==
-
 "@react-navigation/core@^5.15.1":
   version "5.15.1"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.15.1.tgz#dab5192277c606d9acbea511dac407c2834b5fbe"
@@ -12929,9 +12924,8 @@ react-native-simple-elements@1.5.2:
     react-native-linear-gradient "^2.5.6"
 
 "react-native-simple-widgets@file:../../react-native-simple-widgets":
-  version "1.4.1-develop.13"
+  version "1.0.0"
   dependencies:
-    "@react-native-picker/picker" "^1.16.1"
     calendarize "^1.1.1"
     color "3.1.2"
     date-fns-tz "^1.1.4"

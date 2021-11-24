@@ -44,9 +44,10 @@ type Props = {
     onHide?: (flag, date?) => void,
     maximumDate?: Date,
     minimumDate?: Date,
+    options: any[],
 };
 
-export class DateTimePickerModal extends React.PureComponent<Props> {
+export class SelectPickerModal extends React.PureComponent<Props> {
 
     static defaultProps = {
         cancelTextIOS: "Cancel",
@@ -56,6 +57,7 @@ export class DateTimePickerModal extends React.PureComponent<Props> {
         isDarkModeEnabled: undefined,
         isVisible: false,
         pickerContainerStyleIOS: {},
+        options: [],
     };
 
     state = {
@@ -90,11 +92,11 @@ export class DateTimePickerModal extends React.PureComponent<Props> {
         this.setState({ isPickerVisible: false });
     };
 
-    handleChange = (event, date) => {
+    handleChange = (value, index) => {
         if (this.props.onChange) {
-            this.props.onChange(date);
+            this.props.onChange(value);
         }
-        this.setState({ currentDate: date });
+        this.setState({ currentDate: value });
     };
 
     render() {
@@ -116,6 +118,7 @@ export class DateTimePickerModal extends React.PureComponent<Props> {
             // onConfirm,
             // onChange,
             // onHide,
+            options,
             ...otherProps
         } = this.props;
         const isAppearanceModuleAvailable = !!(
@@ -164,7 +167,11 @@ export class DateTimePickerModal extends React.PureComponent<Props> {
                         {...otherProps}
                         selectedValue={this.state.currentDate}
                         onValueChange={this.handleChange}
-                    />
+                    >
+                        {options.map((item, index) => (
+                            <PickerComponent.Item label={item.label} value={item.value} key={index} />
+                        ))}
+                    </PickerComponent>
                     <ConfirmButtonComponent
                         isDarkModeEnabled={_isDarkModeEnabled}
                         onPress={this.handleConfirm}

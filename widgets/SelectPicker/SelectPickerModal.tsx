@@ -1,13 +1,13 @@
 import { Platform } from "react-native";
-import { DateTimePickerModal as DateTimePickerAndroid } from "./SelectPicker.android";
-import { DateTimePickerModal as DateTimePickerIOS } from "./SelectPicker.ios";
+import { SelectPickerModal as SelectPickerModalAndroid } from "./SelectPicker.android";
+import { SelectPickerModal as SelectPickerModalIOS } from "./SelectPicker.ios";
 import { SelectPicker as DateTimePickerMWeb } from "./SelectPicker.web";
 
 const SelectPickerModal = Platform.select({
-    android: DateTimePickerAndroid as any,
-    ios: DateTimePickerIOS,
+    android: SelectPickerModalAndroid as any,
+    ios: SelectPickerModalIOS,
     web: DateTimePickerMWeb,
-    default: DateTimePickerAndroid,
+    default: SelectPickerModalAndroid,
 });
 
 export default SelectPickerModal;

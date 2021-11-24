@@ -18,10 +18,11 @@ type Props = {
     onHide?: (flag, date?) => void,
     maximumDate?: Date,
     minimumDate?: Date,
+    options: any[],
 };
 
-const DateTimePickerModal = React.memo((props: Props) => {
-    const { date, mode, isVisible, onCancel, onConfirm, onHide, ...otherProps } = props;
+const SelectPickerModal = React.memo((props: Props) => {
+    const { date, mode, isVisible, onCancel, onConfirm, onHide, options, ...otherProps } = props;
     const currentDateRef = React.useRef(date);
     const [currentMode, setCurrentMode] = React.useState(null);
 
@@ -66,7 +67,11 @@ const DateTimePickerModal = React.memo((props: Props) => {
             mode={currentMode}
             selectedValue={date}
             onValueChange={handleChange}
-        />
+        >
+            {options.map((item, index) => (
+                <Picker.Item label={item.label} value={item.value} key={index} />
+            ))}
+        </Picker>
     );
 },
 areEqual
@@ -77,4 +82,4 @@ areEqual
 //     isVisible: false,
 // };
 
-export { DateTimePickerModal };
+export { SelectPickerModal };
