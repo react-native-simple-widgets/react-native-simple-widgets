@@ -33,7 +33,15 @@ const items = [
 
 const DateTimePickerExample = () => {
 
-    const [ isDatePickerVisible, setDatePickerVisibility ] = React.useState("");
+    const [ isDatePickerVisible, setDatePickerVisibility ] = React.useState(false);
+
+    const showDatePicker = () => {
+        setDatePickerVisibility(true);
+    };
+
+    const hideDatePicker = () => {
+        setDatePickerVisibility(false);
+    };
 
     const handleConfirm = (date) => {
         setDatePickerVisibility(date);
@@ -46,18 +54,14 @@ const DateTimePickerExample = () => {
             }}
         >
             <SelectPicker
-                selectedValue={isDatePickerVisible}
-                onValueChange={handleConfirm}
+                isVisible={isDatePickerVisible}
+                // selectedValue={isDatePickerVisible}
+                // onValueChange={handleConfirm}
+                onConfirm={handleConfirm}
+                onCancel={hideDatePicker}
                 data-testid="selectpicker"
-            >
-                {(Array.isArray(items) && items.length > 0) &&
-                    items.map((item, index) => {
-                        return (
-                            <Text key={index}>{item.label}</Text>
-                        );
-                    })
-                }
-            </SelectPicker>
+                options={items}
+            />
         </View>
     );
 };
