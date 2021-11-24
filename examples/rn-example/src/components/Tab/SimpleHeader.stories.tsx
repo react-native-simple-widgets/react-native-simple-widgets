@@ -6,7 +6,7 @@ import { ScrollableTab } from "react-native-simple-widgets/widgets/Tab";
 storiesOf("Tab", module)
     .addDecorator(withKnobs)
     .add("Default", () => {
-        return(
+        return (
             <ScrollableTab
                 options={[
                     {
@@ -26,10 +26,10 @@ storiesOf("Tab", module)
                     },
                 ]}
             />
-        )
+        );
     })
     .add("ScrollableTab", () => {
-        return(
+        return (
             <ScrollableTab
                 options={[
                     {
@@ -49,10 +49,10 @@ storiesOf("Tab", module)
                     },
                 ]}
             />
-        )
+        );
     })
     .add("Playground", () => {
-        return(
+        return (
             <ScrollableTab
                 options={[
                     {
@@ -72,5 +72,5 @@ storiesOf("Tab", module)
                     },
                 ]}
             />
-        )
+        );
     });

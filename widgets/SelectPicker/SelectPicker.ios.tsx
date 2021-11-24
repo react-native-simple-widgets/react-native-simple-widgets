@@ -6,7 +6,7 @@ import {
     View,
     Appearance,
 } from "react-native";
-import DateTimePicker from "./mweb/DateTimePicker";
+import { Picker } from "@react-native-picker/picker";
 import Modal from "./Modal";
 import { isIphoneX } from "./utils";
 
@@ -31,7 +31,7 @@ type Props = {
     customHeaderIOS?: React.ReactElement,
     customPickerIOS?: React.ReactElement,
     date?: Date,
-    mode?: string,
+    mode?: "dialog" | "dropdown",
     headerTextIOS?: string,
     modalPropsIOS?: any,
     modalStyleIOS?: any,
@@ -44,9 +44,10 @@ type Props = {
     onHide?: (flag, date?) => void,
     maximumDate?: Date,
     minimumDate?: Date,
+    options: any[],
 };
 
-export class DateTimePickerWeb extends React.PureComponent<Props> {
+class SelectPicker extends React.PureComponent<Props> {
 
     static defaultProps = {
         cancelTextIOS: "Cancel",
@@ -56,6 +57,7 @@ export class DateTimePickerWeb extends React.PureComponent<Props> {
         isDarkModeEnabled: undefined,
         isVisible: false,
         pickerContainerStyleIOS: {},
+        options: [],
     };
 
     state = {
@@ -90,11 +92,11 @@ export class DateTimePickerWeb extends React.PureComponent<Props> {
         this.setState({ isPickerVisible: false });
     };
 
-    handleChange = (event, date) => {
+    handleChange = (value, index) => {
         if (this.props.onChange) {
-            this.props.onChange(date);
+            this.props.onChange(value);
         }
-        this.setState({ currentDate: date });
+        this.setState({ currentDate: value });
     };
 
     render() {
@@ -116,6 +118,7 @@ export class DateTimePickerWeb extends React.PureComponent<Props> {
             // onConfirm,
             // onChange,
             // onHide,
+            options,
             ...otherProps
         } = this.props;
         const isAppearanceModuleAvailable = !!(
@@ -133,7 +136,7 @@ export class DateTimePickerWeb extends React.PureComponent<Props> {
         //   const HeaderComponent = customHeaderIOS || Header;
         const HeaderComponent = Header;
         //   const PickerComponent = customPickerIOS || DateTimePicker;
-        const PickerComponent = DateTimePicker;
+        const PickerComponent = Picker;
 
 
         const themedContainerStyle = _isDarkModeEnabled
@@ -141,9 +144,7 @@ export class DateTimePickerWeb extends React.PureComponent<Props> {
             : pickerStyles.containerLight;
 
         const headerText =
-            headerTextIOS || (this.props.mode === "time"
-                ? "Pick a time"
-                : "Pick a date");
+            headerTextIOS || "Pick an options";
 
         return (
             <Modal
@@ -164,10 +165,13 @@ export class DateTimePickerWeb extends React.PureComponent<Props> {
                     <PickerComponent
                         // display="spinner"
                         {...otherProps}
-                        date={this.state.currentDate}
-                        // onChange={this.handleChange}
+                        selectedValue={this.state.currentDate}
                         onValueChange={this.handleChange}
-                    />
+                    >
+                        {options.map((item, index) => (
+                            <PickerComponent.Item label={item.label} value={item.value} key={index} />
+                        ))}
+                    </PickerComponent>
                     <ConfirmButtonComponent
                         isDarkModeEnabled={_isDarkModeEnabled}
                         onPress={this.handleConfirm}
@@ -321,3 +325,5 @@ export const cancelButtonStyles = StyleSheet.create({
         backgroundColor: "transparent",
     },
 });
+
+export default SelectPicker;

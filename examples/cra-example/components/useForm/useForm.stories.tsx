@@ -16,7 +16,7 @@ storiesOf("hooks/useForm", module)
 
         const _handleSubmit = (values) => {
             console.log(values);
-        }
+        };
 
         const {
             values,
@@ -56,5 +56,5 @@ storiesOf("hooks/useForm", module)
                     onLogoutClick={action("onLogoutClick")}
                 />
             </>
-        )
+        );
     });

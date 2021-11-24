@@ -1,16 +1,16 @@
 import * as React from "react";
-import DateTimePicker from "@react-native-community/datetimepicker";
+import { Picker } from "@react-native-picker/picker";
 
 // Memo workaround for https://github.com/react-native-community/datetimepicker/issues/54
 const areEqual = (prevProps, nextProps) => {
     return (
         prevProps.isVisible === nextProps.isVisible &&
-        prevProps.date.getTime() === nextProps.date.getTime()
+        prevProps.selectedValue === nextProps.selectedValue
     );
 };
 
 type Props = {
-    date?: Date,
+    selectedValue?: Date,
     mode?: string,
     isVisible?: boolean,
     onCancel: () => void,
@@ -18,16 +18,17 @@ type Props = {
     onHide?: (flag, date?) => void,
     maximumDate?: Date,
     minimumDate?: Date,
+    options: any[],
 };
 
-const DateTimePickerModal = React.memo((props: Props) => {
-    const { date, mode, isVisible, onCancel, onConfirm, onHide, ...otherProps } = props;
-    const currentDateRef = React.useRef(date);
+const SelectPicker = React.memo((props: Props) => {
+    const { selectedValue, mode, isVisible, onCancel, onConfirm, onHide, options, ...otherProps } = props;
+    const currentDateRef = React.useRef(selectedValue);
     const [currentMode, setCurrentMode] = React.useState(null);
 
     React.useEffect(() => {
         if (isVisible && currentMode === null) {
-            setCurrentMode(mode === "time" ? "time" : "date");
+            setCurrentMode(mode === "dropdown" ? "dropdown" : "dialog");
         } else if (!isVisible) {
             setCurrentMode(null);
         }
@@ -61,12 +62,16 @@ const DateTimePickerModal = React.memo((props: Props) => {
     };
 
     return (
-        <DateTimePicker
+        <Picker
             {...otherProps}
             mode={currentMode}
-            value={date}
-            onChange={handleChange}
-        />
+            selectedValue={selectedValue}
+            onValueChange={handleChange}
+        >
+            {options.map((item, index) => (
+                <Picker.Item label={item.label} value={item.value} key={index} />
+            ))}
+        </Picker>
     );
 },
 areEqual
@@ -77,4 +82,4 @@ areEqual
 //     isVisible: false,
 // };
 
-export default DateTimePickerModal;
+export default SelectPicker;

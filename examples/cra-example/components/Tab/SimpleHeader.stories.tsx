@@ -5,7 +5,7 @@ import { action } from "@storybook/addon-actions";
 import MenuIcon from "@mdi/svg/svg/menu.svg";
 import SimpleHeader from "react-native-simple-widgets/widgets/SimpleHeader";
 import { ScrollableTab } from "react-native-simple-widgets/widgets/Tab";
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 
 const viewportParams = {
     viewports: {
@@ -35,7 +35,7 @@ storiesOf("Tab", module)
                     onLogoutClick={action("onLogoutClick")}
                 />
             </>
-        )
+        );
     })
     .add("ScrollableTab", () => {
         return(
@@ -61,7 +61,7 @@ storiesOf("Tab", module)
                     width: "100%",
                 }}
             />
-        )
+        );
     }, {
         viewport: {
             ...viewportParams,
@@ -84,5 +84,5 @@ storiesOf("Tab", module)
                     onLogoutClick={action("onLogoutClick")}
                 />
             </>
-        )
+        );
     });

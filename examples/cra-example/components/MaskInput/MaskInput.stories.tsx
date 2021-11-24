@@ -1,15 +1,15 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import { KeyboardAvoidingView, ScrollView, StyleSheet, Text } from 'react-native';
+import { KeyboardAvoidingView, ScrollView, StyleSheet, Text } from "react-native";
 import MaskInput, { Masks } from "react-native-simple-widgets/widgets/MaskInput";
 
 const Example = () => {
-    const [cpfCnpj, setCpfCnpj] = React.useState('');
-    const [phone, setPhone] = React.useState('');
-    const [carPlate, setCarPlate] = React.useState('');
-    const [creditCard, setCreditCard] = React.useState('');
-    const [money, setMoney] = React.useState('');
-    const [date, setDate] = React.useState('');
+    const [ cpfCnpj, setCpfCnpj ] = React.useState("");
+    const [ phone, setPhone ] = React.useState("");
+    const [ carPlate, setCarPlate ] = React.useState("");
+    const [ creditCard, setCreditCard ] = React.useState("");
+    const [ money, setMoney ] = React.useState("");
+    const [ date, setDate ] = React.useState("");
 
     return (
         <KeyboardAvoidingView style={styles.screenContainer}>
@@ -78,7 +78,7 @@ const Example = () => {
             </ScrollView>
         </KeyboardAvoidingView>
     );
-}
+};
 
 const styles = StyleSheet.create({
     button: {
@@ -88,24 +88,24 @@ const styles = StyleSheet.create({
         marginBottom: 8,
         paddingVertical: 12,
         borderRadius: 8,
-        backgroundColor: '#ddd',
+        backgroundColor: "#ddd",
     },
     buttonsContainer: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
+        flexDirection: "row",
+        flexWrap: "wrap",
+        alignItems: "center",
+        justifyContent: "space-evenly",
     },
     container: {
         flexGrow: 1,
-        justifyContent: 'center',
+        justifyContent: "center",
         padding: 16,
     },
     inputBasic: {
         marginVertical: 8,
         fontSize: 18,
         borderWidth: 1,
-        borderColor: '#cdcdcd',
+        borderColor: "#cdcdcd",
         paddingHorizontal: 12,
         height: 54,
     },
@@ -113,19 +113,19 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     inputMaskContainer: {
-        borderColor: '#cdcdcd',
+        borderColor: "#cdcdcd",
         height: 54,
         marginVertical: 8,
         paddingHorizontal: 12,
-        justifyContent: 'center',
+        justifyContent: "center",
         borderWidth: 1,
     },
     label: {
         fontSize: 20,
         marginBottom: 16,
-        fontWeight: 'bold',
+        fontWeight: "bold",
         marginTop: 24,
-        textAlign: 'center',
+        textAlign: "center",
     },
     screenContainer: {
         flex: 1,
@@ -133,4 +133,4 @@ const styles = StyleSheet.create({
 });
 
 storiesOf("MaskInput", module)
-    .add("Default", () => <Example />)
+    .add("Default", () => <Example />);

@@ -23,14 +23,14 @@ export const HIGHLIGHT_COLOR_LIGHT = "#ebebeb";
 export const TITLE_FONT_SIZE = 20;
 export const TITLE_COLOR = "#8f8f8f";
 
-type Props = {
+export type Props = {
     cancelTextIOS?: string,
     confirmTextIOS?: string,
     customCancelButtonIOS?: React.ReactElement,
     customConfirmButtonIOS?: React.ReactElement,
     customHeaderIOS?: React.ReactElement,
     customPickerIOS?: React.ReactElement,
-    date?: Date,
+    selectedValue?: string,
     mode?: string,
     headerTextIOS?: string,
     modalPropsIOS?: any,
@@ -40,13 +40,18 @@ type Props = {
     pickerContainerStyleIOS?: any,
     onCancel: () => void,
     onConfirm: (date) => void,
-    onChange?: (date) => void,
+    onValueChange?: (date) => void,
     onHide?: (flag, date?) => void,
     maximumDate?: Date,
     minimumDate?: Date,
+    options: any[],
+    style?: any,
+    itemStyle?: any,
+    disabled?: boolean,
+    prefixCls?: string,
 };
 
-export class SelectPicker extends React.PureComponent<Props> {
+class SelectPicker extends React.PureComponent<Props> {
 
     static defaultProps = {
         cancelTextIOS: "Cancel",
@@ -56,10 +61,11 @@ export class SelectPicker extends React.PureComponent<Props> {
         isDarkModeEnabled: undefined,
         isVisible: false,
         pickerContainerStyleIOS: {},
+        options: [],
     };
 
     state = {
-        currentDate: this.props.date,
+        currentDate: this.props.selectedValue,
         isPickerVisible: this.props.isVisible,
     };
 
@@ -67,7 +73,7 @@ export class SelectPicker extends React.PureComponent<Props> {
 
     static getDerivedStateFromProps(props, state) {
         if (props.isVisible && !state.isPickerVisible) {
-            return { currentDate: props.date, isPickerVisible: true };
+            return { currentDate: props.selectedValue, isPickerVisible: true };
         }
         return null;
     }
@@ -91,8 +97,15 @@ export class SelectPicker extends React.PureComponent<Props> {
     };
 
     handleChange = (date) => {
-        if (this.props.onChange) {
-            this.props.onChange(date);
+        if (this.props.onValueChange) {
+            this.props.onValueChange(date);
+        }
+        this.setState({ currentDate: date });
+    };
+
+    handleScrollChange = (date, arg2?) => {
+        if (this.props.onValueChange) {
+            this.props.onValueChange(date);
         }
         this.setState({ currentDate: date });
     };
@@ -114,9 +127,9 @@ export class SelectPicker extends React.PureComponent<Props> {
             pickerContainerStyleIOS,
             // onCancel,
             // onConfirm,
-            // onChange,
+            // onValueChange,
             // onHide,
-            children,
+            options,
             ...otherProps
         } = this.props;
         const isAppearanceModuleAvailable = !!(
@@ -172,8 +185,13 @@ export class SelectPicker extends React.PureComponent<Props> {
                             selectedValue={this.state.currentDate}
                             // onChange={this.handleChange}
                             onValueChange={this.handleChange}
+                            onScrollChange={this.handleScrollChange}
                         >
-                            {children}
+                            {options.map(item => (
+                                <PickerComponent.Item key={item.value} value={item.value}>
+                                    {item.label}
+                                </PickerComponent.Item>
+                            ))}
                         </PickerComponent>
                     </View>
                     <ConfirmButtonComponent
@@ -329,3 +347,5 @@ export const cancelButtonStyles = StyleSheet.create({
         backgroundColor: "transparent",
     },
 });
+
+export default SelectPicker;

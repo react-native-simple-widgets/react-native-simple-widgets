@@ -1,6 +1,6 @@
 import * as React from "react";
 import MultiPicker from "../../SelectPicker/mweb/MultiPicker";
-import Picker from "../../SelectPicker";
+import Picker from "../../SelectPicker/mweb/Picker";
 import IDatePickerProps from "./IDateTimePickerProps";
 import defaultLocale from "./locale/en_US";
 

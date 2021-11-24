@@ -15,7 +15,7 @@ const Example = (props) => {
             </Text>
         </>
     );
-}
+};
 
 storiesOf("00 Getting Started", module)
-    .add("Default", () => <Example />)
+    .add("Default", () => <Example />);

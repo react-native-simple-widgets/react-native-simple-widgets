@@ -6,5 +6,5 @@ export function SettingPage() {
         <div>
             Hello from SettingPage
         </div>
-    )
+    );
 }
