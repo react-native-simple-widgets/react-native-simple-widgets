@@ -1,15 +1,15 @@
 import * as React from "react";
-import { Dimensions, ImageBackground, StyleSheet, Text } from 'react-native';
+import { Dimensions, ImageBackground, StyleSheet, Text } from "react-native";
 import { storiesOf } from "@storybook/react-native";
 import { withKnobs } from "@storybook/addon-knobs";
-import { SwiperFlatList } from "react-native-simple-widgets/widgets/SwiperFlatList";
+import SwiperFlatList from "react-native-simple-widgets/widgets/SwiperFlatList";
 
-import { fox, cat, background, element, lion } from './images';
-import { CustomPagination } from './CustomPagination';
+import { fox, cat, background, element, lion } from "./images";
+import { CustomPagination } from "./CustomPagination";
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
-const newImage = [lion, fox, cat, background, element];
+const newImage = [ lion, fox, cat, background, element ];
 const image = (index) => ({ image: newImage[index % newImage.length] });
 const items = Array.from(Array(5)).map((_, index) => image(index));
 
@@ -26,8 +26,7 @@ const SwiperFlatListExample = () => {
                 <ImageBackground
                     style={styles.image}
                     source={item.image}
-                    testID={`container_swiper_renderItem_screen_${index}`}
-                >
+                    testID={`container_swiper_renderItem_screen_${index}`}>
                     <Text style={styles.text}>Item at index {index}</Text>
                 </ImageBackground>
             )}
@@ -41,23 +40,20 @@ const SwiperFlatListExample = () => {
 const styles = StyleSheet.create({
     image: {
         width,
-        resizeMode: 'cover',
-        justifyContent: 'flex-end',
+        resizeMode: "cover",
+        justifyContent: "flex-end",
     },
     text: {
         fontSize: width * 0.1,
-        color: 'whitesmoke',
-        textAlign: 'center',
+        color: "whitesmoke",
+        textAlign: "center",
     },
 });
 
 storiesOf("SwiperFlatList", module)
     .addDecorator(withKnobs)
     .add("Default", () => {
-        return (
-            <SwiperFlatListExample
-            />
-        )
+        return <SwiperFlatListExample />;
     })
     .add("Loop", () => {
         return (
@@ -73,8 +69,7 @@ storiesOf("SwiperFlatList", module)
                     <ImageBackground
                         style={styles.image}
                         source={item.image}
-                        testID={`container_swiper_renderItem_screen_${index}`}
-                    >
+                        testID={`container_swiper_renderItem_screen_${index}`}>
                         <Text style={styles.text}>Item at index {index}</Text>
                     </ImageBackground>
                 )}
@@ -82,11 +77,8 @@ storiesOf("SwiperFlatList", module)
                 PaginationComponent={CustomPagination}
                 e2eID="container_swiper_renderItem"
             />
-        )
+        );
     })
     .add("Playground", () => {
-        return (
-            <SwiperFlatListExample
-            />
-        )
+        return <SwiperFlatListExample />;
     });

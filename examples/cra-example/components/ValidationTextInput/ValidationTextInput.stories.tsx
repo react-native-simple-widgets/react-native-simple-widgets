@@ -13,7 +13,7 @@ const ValidationTextInputExample = (props) => {
             }}
             errorMessage="Has error"
         />
-    )
+    );
 };
 
 const WithMaskedExample = (props) => {
@@ -27,7 +27,7 @@ const WithMaskedExample = (props) => {
             masked={true}
             mask={Masks.DATE_MMDDYYYY}
         />
-    )
+    );
 };
 
 storiesOf("ValidationTextInput", module)
@@ -35,6 +35,6 @@ storiesOf("ValidationTextInput", module)
         return (
             <ValidationTextInputExample
             />
-        )
+        );
     })
-    .add("with masked", () => <WithMaskedExample />)
+    .add("with masked", () => <WithMaskedExample />);

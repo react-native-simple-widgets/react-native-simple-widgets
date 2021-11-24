@@ -10,8 +10,8 @@ const PlaygroundExample = () => {
             <Text>{formatCurrency(123456.7)}</Text>
             <Text>{formatCurrency(123456.7, "vi-VN", "VND")}</Text>
         </>
-    )
+    );
 };
 
 storiesOf("utils/currency", module)
-    .add("Playground", () => <PlaygroundExample />)
+    .add("Playground", () => <PlaygroundExample />);

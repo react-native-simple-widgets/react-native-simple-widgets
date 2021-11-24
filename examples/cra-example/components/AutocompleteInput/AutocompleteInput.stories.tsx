@@ -13,14 +13,14 @@ const viewportParams = {
         ...INITIAL_VIEWPORTS,
     },
     defaultViewport: "responsive",
-}
+};
 
 const iphonexlayout = {
     viewport: {
         ...viewportParams,
         defaultViewport: "iphonex",
     }
-}
+};
 
 const SAMPLE_DATA = [
     "hello",
@@ -30,22 +30,22 @@ const SAMPLE_DATA = [
 
 const DefaultExample = (props) => {
 
-    const [value, setValue] = React.useState("");
-    const [showResults, setShowResults] = React.useState(false);
+    const [ value, setValue ] = React.useState("");
+    const [ showResults, setShowResults ] = React.useState(false);
 
     const filterData = () => {
         return SAMPLE_DATA.filter(item => item.indexOf(value) > -1);
-    }
+    };
 
     const _handleKeyPress = (evt) => {
         if (evt.nativeEvent.key === "Enter") {
             // setShowResults(true);
         }
-    }
+    };
 
     const _handleOnBlur = () => {
         // setShowResults(false);
-    }
+    };
 
     const data = filterData();
 
@@ -58,7 +58,7 @@ const DefaultExample = (props) => {
                         data={data}
                         hideResults={!showResults}
                         onChangeText={(text) => {
-                            setValue(text)
+                            setValue(text);
                         }}
                         onFocus={() => {
                             setShowResults(true);
@@ -67,7 +67,9 @@ const DefaultExample = (props) => {
                             data: data,
                             keyExtractor: (item, idx) => `${idx}`,
                             renderItem: ({ item }) =>
-                                <Button onPress={() => {}}><Text>{item}</Text></Button>,
+                                <Button onPress={() => {
+                                    // do something
+                                }}><Text>{item}</Text></Button>,
                         }}
                         renderTextInput={(textInputProps) => (
                             <TextInput2
@@ -83,41 +85,41 @@ const DefaultExample = (props) => {
             </View>
         </>
     );
-}
+};
 
 const MobileViewExample = (props) => {
 
-    const [value, setValue] = React.useState("");
-    const [showResults, setShowResults] = React.useState(false);
-    const [value2, setValue2] = React.useState("");
-    const [showResults2, setShowResults2] = React.useState(false);
+    const [ value, setValue ] = React.useState("");
+    const [ showResults, setShowResults ] = React.useState(false);
+    const [ value2, setValue2 ] = React.useState("");
+    const [ showResults2, setShowResults2 ] = React.useState(false);
 
     const filterData = () => {
         return SAMPLE_DATA.filter(item => item.indexOf(value) > -1);
-    }
+    };
 
     const _handleKeyPress = (evt) => {
         if (evt.nativeEvent.key === "Enter") {
             // setShowResults(true);
         }
-    }
+    };
 
     const _handleOnBlur = () => {
         // setShowResults(false);
-    }
+    };
 
     const data = filterData();
 
     return (
         <>
-            <View style={[styles.container, {zIndex: 2}]}>
-                <View style={[styles.autocompleteContainer, { zIndex: 2 } ]}>
+            <View style={[ styles.container, { zIndex: 2 } ]}>
+                <View style={[ styles.autocompleteContainer, { zIndex: 2 } ]}>
                     <AutocompleteInput
                         value={value}
                         data={data}
                         hideResults={!showResults}
                         onChangeText={(text) => {
-                            setValue(text)
+                            setValue(text);
                         }}
                         onFocus={() => {
                             setShowResults(true);
@@ -126,7 +128,9 @@ const MobileViewExample = (props) => {
                             data: data,
                             keyExtractor: (item, idx) => `${idx}`,
                             renderItem: ({ item }) =>
-                                <Button onPress={() => {}}><Text>{item}</Text></Button>,
+                                <Button onPress={() => {
+                                    // do something
+                                }}><Text>{item}</Text></Button>,
                         }}
                         renderTextInput={(textInputProps) => (
                             <TextInput
@@ -147,7 +151,7 @@ const MobileViewExample = (props) => {
                         data={data}
                         hideResults={!showResults2}
                         onChangeText={(text) => {
-                            setValue2(text)
+                            setValue2(text);
                         }}
                         onFocus={() => {
                             setShowResults2(true);
@@ -156,7 +160,9 @@ const MobileViewExample = (props) => {
                             data: data,
                             keyExtractor: (item, idx) => `${idx}`,
                             renderItem: ({ item }) =>
-                                <Button onPress={() => {}}><Text>{item}</Text></Button>,
+                                <Button onPress={() => {
+                                    // do something
+                                }}><Text>{item}</Text></Button>,
                         }}
                         renderTextInput={(textInputProps) => (
                             <TextInput
@@ -172,7 +178,7 @@ const MobileViewExample = (props) => {
             </View>
         </>
     );
-}
+};
 
 storiesOf("AutocompleteInput", module)
     .add("Default", () => <DefaultExample />)
@@ -181,8 +187,8 @@ storiesOf("AutocompleteInput", module)
 
 const styles = StyleSheet.create({
     container: {
-        position: 'relative',
-        backgroundColor: '#F5FCFF',
+        position: "relative",
+        backgroundColor: "#F5FCFF",
         // flex: 1,
 
         // Android requiers padding to avoid overlapping
@@ -206,18 +212,18 @@ const styles = StyleSheet.create({
     descriptionContainer: {
         // `backgroundColor` needs to be set otherwise the
         // autocomplete input will disappear on text input.
-        backgroundColor: '#F5FCFF',
+        backgroundColor: "#F5FCFF",
         marginTop: 8,
     },
     infoText: {
-        textAlign: 'center',
+        textAlign: "center",
     },
     autocompleteContainer: {
         // Hack required to make the autocomplete
         // work on Andrdoid
         flex: 1,
         left: 0,
-        position: 'absolute',
+        position: "absolute",
         right: 0,
         top: 0,
         zIndex: 1,

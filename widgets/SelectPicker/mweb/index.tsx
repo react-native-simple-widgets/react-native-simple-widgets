@@ -1,2 +1,7 @@
 // export this package's api
-export { default } from "./Picker";
+import Picker, { SelectPickerContentItem } from "./Picker";
+
+export {
+    Picker as default,
+    SelectPickerContentItem,
+}

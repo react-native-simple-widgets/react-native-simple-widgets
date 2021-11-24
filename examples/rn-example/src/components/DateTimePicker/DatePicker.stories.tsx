@@ -1,23 +1,52 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
-import DateTimePicker from 'react-native-simple-widgets/widgets/DateTimePicker';
+import DateTimePicker from "react-native-simple-widgets/widgets/DateTimePicker";
+import { View } from "react-native";
+import { Button } from "react-native";
+import { action } from "@storybook/addon-actions";
 
-const baseProps = {
-    dateTimePickerProps: {
-        minimumDate: new Date('2019-01-30'),
-        maximumDate: new Date('2019-01-30'),
-    },
-    dateFormat: "dd/MM/yyyy",
-    placeholder: 'DD/MM/YYYY',
-    value: '22/02/2020',
+const DateTimePickerExample = () => {
+    const [ isDatePickerVisible, setDatePickerVisibility ] = React.useState(
+        false,
+    );
+
+    const showDatePicker = () => {
+        setDatePickerVisibility(true);
+    };
+
+    const hideDatePicker = () => {
+        setDatePickerVisibility(false);
+    };
+
+    const handleConfirm = (date) => {
+        console.warn("A date has been picked: ", date);
+        hideDatePicker();
+        action("onConfirm")(date);
+    };
+
+    const handleHide = () => {
+        // do something
+    };
+
+    return (
+        <View
+            style={{
+                flex: 1,
+            }}>
+            <Button title="Show Date Picker" onPress={showDatePicker} />
+            <DateTimePicker
+                isVisible={isDatePickerVisible}
+                mode="datetime"
+                use12Hours={true}
+                date={new Date()}
+                onHide={handleHide}
+                onConfirm={handleConfirm}
+                onCancel={hideDatePicker}
+            />
+        </View>
+    );
 };
 
-storiesOf("DateTimePicker", module)
-    .add("Default", () => {
-        return (
-            <DateTimePicker
-                {...baseProps}
-                isVisible={true}
-            />
-        )
-    })
+storiesOf("DateTimePicker", module).add("Default", () => (
+    <DateTimePickerExample />
+));

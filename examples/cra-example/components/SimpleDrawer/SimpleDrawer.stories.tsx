@@ -31,13 +31,13 @@ const SimpleDrawerExample = (props) => {
                 drawerPaddingTop="0"
             />
         </>
-    )
-}
+    );
+};
 
 storiesOf("SimpleDrawer", module)
     .add("Default", () => {
         return(
             <SimpleDrawerExample
             />
-        )
-    })
+        );
+    });
