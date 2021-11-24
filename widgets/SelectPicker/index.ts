@@ -1,5 +1,5 @@
-import SelectPickerModal from "./SelectPickerModal";
+import SelectPicker from "./SelectPicker.mweb";
 
 export {
-    SelectPickerModal as default,
+    SelectPicker as default,
 };

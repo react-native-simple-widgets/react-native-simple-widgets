@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { StyleSheet } from 'react-native';
-import { Pagination } from 'react-native-simple-widgets/widgets/SwiperFlatList';
+import * as React from "react";
+import { StyleSheet } from "react-native";
+import { Pagination } from "react-native-simple-widgets/widgets/SwiperFlatList";
 
 const styles = StyleSheet.create({
     paginationContainer: {

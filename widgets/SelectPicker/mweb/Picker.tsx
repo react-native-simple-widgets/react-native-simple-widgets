@@ -49,7 +49,7 @@ const SelectPickerContent = styled.div`
     z-index: 1;
 `;
 
-const SelectPickerContentItem = styled.div`
+export const SelectPickerContentItem = styled.div`
     font-size: 16px;
     height: 34px;
     line-height: 34px;
@@ -68,6 +68,8 @@ export interface IPickerProp {
     doScrollingComplete: (...arg) => void;
     computeChildIndex: (...arg) => number;
 }
+
+export type Props = IPickerProp & IPickerProps;
 
 class Picker extends React.Component<IPickerProp & IPickerProps, any> {
     static defaultProps = {
@@ -276,7 +278,7 @@ class Picker extends React.Component<IPickerProp & IPickerProps, any> {
                 },
             });
             window.addEventListener("test", null as any, options);
-        } catch (err) { 
+        } catch (err) {
             // do something
         }
         return passiveSupported;
@@ -405,8 +407,8 @@ class Picker extends React.Component<IPickerProp & IPickerProps, any> {
                     ref={el => this.indicatorRef = el}
                     style={indicatorStyle}
                 />
-                <SelectPickerContent 
-                    // className={`${prefixCls}-content`} 
+                <SelectPickerContent
+                    // className={`${prefixCls}-content`}
                     ref={el => this.contentRef = el}
                 >
                     {items}

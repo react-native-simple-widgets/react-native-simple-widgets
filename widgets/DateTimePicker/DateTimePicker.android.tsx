@@ -77,4 +77,4 @@ areEqual
 //     isVisible: false,
 // };
 
-export { DateTimePickerModal };
+export default DateTimePickerModal;

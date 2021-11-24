@@ -8,7 +8,7 @@
  * @format
  */
 
-import * as React from 'react';
+import * as React from "react";
 import {
     SafeAreaView,
     StyleSheet,
@@ -16,7 +16,7 @@ import {
     View,
     Text,
     StatusBar,
-} from 'react-native';
+} from "react-native";
 import LightTheme from "react-native-simple-elements/components/theme/LightTheme";
 import RNSPText from "react-native-simple-elements/components/Text";
 import {
@@ -25,10 +25,11 @@ import {
     Colors,
     DebugInstructions,
     ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import { ThemeProvider } from 'styled-components';
+} from "react-native/Libraries/NewAppScreen";
+import { ThemeProvider } from "styled-components";
 
-declare const global: { HermesInternal: null | {} };
+// eslint-disable-next-line @typescript-eslint/ban-types
+declare const global: {HermesInternal: null | {}};
 
 const App = () => {
     return (
@@ -49,12 +50,16 @@ const App = () => {
                         <View style={styles.sectionContainer}>
                             <Text style={styles.sectionTitle}>Step One</Text>
                             <Text style={styles.sectionDescription}>
-                                Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
+                                Edit{" "}
+                                <Text style={styles.highlight}>App.tsx</Text> to
+                                change this screen and then come back to see
+                                your edits.
+                            </Text>
                         </View>
                         <View style={styles.sectionContainer}>
-                            <Text style={styles.sectionTitle}>See Your Changes</Text>
+                            <Text style={styles.sectionTitle}>
+                                See Your Changes
+                            </Text>
                             <Text style={styles.sectionDescription}>
                                 <ReloadInstructions />
                             </Text>
@@ -69,7 +74,7 @@ const App = () => {
                             <Text style={styles.sectionTitle}>Learn More</Text>
                             <Text style={styles.sectionDescription}>
                                 Read the docs to discover what to do next:
-              </Text>
+                            </Text>
                         </View>
                         <LearnMoreLinks />
                     </View>
@@ -84,7 +89,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.lighter,
     },
     engine: {
-        position: 'absolute',
+        position: "absolute",
         right: 0,
     },
     body: {
@@ -96,25 +101,25 @@ const styles = StyleSheet.create({
     },
     sectionTitle: {
         fontSize: 24,
-        fontWeight: '600',
+        fontWeight: "600",
         color: Colors.black,
     },
     sectionDescription: {
         marginTop: 8,
         fontSize: 18,
-        fontWeight: '400',
+        fontWeight: "400",
         color: Colors.dark,
     },
     highlight: {
-        fontWeight: '700',
+        fontWeight: "700",
     },
     footer: {
         color: Colors.dark,
         fontSize: 12,
-        fontWeight: '600',
+        fontWeight: "600",
         padding: 4,
         paddingRight: 12,
-        textAlign: 'right',
+        textAlign: "right",
     },
 });
 

@@ -17,11 +17,11 @@ const iphonexlayout = {
         ...viewportParams,
         defaultViewport: "iphonex",
     },
-}
+};
 
 const DateTimePickerExample = () => {
 
-    const [isDatePickerVisible, setDatePickerVisibility] = React.useState(false);
+    const [ isDatePickerVisible, setDatePickerVisibility ] = React.useState(false);
 
     const showDatePicker = () => {
         setDatePickerVisibility(true);
@@ -52,8 +52,8 @@ const DateTimePickerExample = () => {
                 onCancel={hideDatePicker}
             />
         </View>
-    )
-}
+    );
+};
 
 storiesOf("DateTimePicker", module)
     .add("Default", () => <DateTimePickerExample />, iphonexlayout);

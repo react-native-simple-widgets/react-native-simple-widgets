@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useHistory } from "react-router-dom";
 import Button from "react-native-simple-elements/components/Button";
-import { StackNavigationProp } from '@react-navigation/stack';
+import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "src/types";
 import { ToastExample } from "src/components/Toast/ToastExample";
 import MinusBoxIcon from "@mdi/svg/svg/minus-box.svg";
@@ -57,7 +57,7 @@ const testData = [
 
 type ProfileScreenNavigationProp = StackNavigationProp<
     RootStackParamList,
-    'Home'
+    "Home"
 >;
 
 type Props = {
@@ -76,7 +76,7 @@ export function HomePage(props: Props) {
                 onPress={() => {
                     history.push("/profile", {
                         id: "123",
-                    })
+                    });
                 }}
             >
                 Go to Profile
@@ -100,10 +100,10 @@ export function HomePage(props: Props) {
                             >
                                 {index}
                             </Card>
-                        )
+                        );
                     })
                 }
             </ScrollView>
         </>
-    )
+    );
 }

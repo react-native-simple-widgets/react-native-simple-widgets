@@ -1,33 +1,33 @@
-import * as React from 'react';
+import * as React from "react";
 import { ThemeProvider } from "styled-components";
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import LightTheme from "react-native-simple-elements/components/theme/LightTheme";
-import ToastProvider from 'react-native-simple-elements/components/Toast';
+import ToastProvider from "react-native-simple-elements/components/Toast";
 import { Viewport } from "react-native-simple-elements/components/Container";
-import { Switch, Route } from 'react-router-dom';
-import './App.css';
+import { Switch, Route } from "react-router-dom";
+import "./App.css";
 
-import { useWindowDimensions } from 'react-native';
-import { HomePage } from './pages/home/HomePage';
-import { ProfilePage } from './pages/profile/ProfilePage';
-import { SettingPage } from './pages/setting/SettingPage';
+import { useWindowDimensions } from "react-native";
+import { HomePage } from "./pages/home/HomePage";
+import { ProfilePage } from "./pages/profile/ProfilePage";
+import { SettingPage } from "./pages/setting/SettingPage";
 
 function SplashScreen() {
     return (
         <div>
             Loading...
         </div>
-    )
+    );
 }
 
 const linking = {
-    prefixes: ['https://mychat.com', 'mychat://'],
+    prefixes: [ "https://mychat.com", "mychat://" ],
     config: {
         screens: {
-            Home: '',
-            Profile: ':id/profile',
-            Setting: ':id/blog',
+            Home: "",
+            Profile: ":id/profile",
+            Setting: ":id/blog",
         }
     },
 };

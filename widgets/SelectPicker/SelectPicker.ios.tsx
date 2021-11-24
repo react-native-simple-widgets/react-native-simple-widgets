@@ -47,7 +47,7 @@ type Props = {
     options: any[],
 };
 
-export class SelectPickerModal extends React.PureComponent<Props> {
+class SelectPicker extends React.PureComponent<Props> {
 
     static defaultProps = {
         cancelTextIOS: "Cancel",
@@ -325,3 +325,5 @@ export const cancelButtonStyles = StyleSheet.create({
         backgroundColor: "transparent",
     },
 });
+
+export default SelectPicker;

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { RouteProp } from '@react-navigation/native';
+import { RouteProp } from "@react-navigation/native";
 import { useParams } from "react-router-dom";
 import { RootStackParamList } from "src/types";
 import { ScrollviewViewport } from "react-native-simple-elements/components/Container";
@@ -61,7 +61,7 @@ const testData = [
     {},
 ];
 
-type ProfileScreenRouteProp = RouteProp<RootStackParamList, 'Profile'>;
+type ProfileScreenRouteProp = RouteProp<RootStackParamList, "Profile">;
 
 type Props = {
     route: ProfileScreenRouteProp;
@@ -93,10 +93,10 @@ export function ProfilePage(props: Props) {
                             >
                                 {index}
                             </Card>
-                        )
+                        );
                     })
                 }
             </ScrollviewViewport>
         </>
-    )
+    );
 }

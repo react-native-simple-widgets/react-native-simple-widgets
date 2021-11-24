@@ -15,7 +15,7 @@ const DefaultExample = () => {
 
     const handleSubmit = () => {
         // do something
-    }
+    };
 
     return(
         <>
@@ -50,5 +50,5 @@ storiesOf("utils/useTranslation", module)
                     onLogoutClick={action("onLogoutClick")}
                 />
             </>
-        )
+        );
     });

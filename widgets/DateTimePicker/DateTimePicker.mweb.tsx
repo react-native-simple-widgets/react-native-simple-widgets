@@ -54,7 +54,7 @@ const convertValuesToDate = (cur, values, index, use12Hours) => {
     return newDate;
 }
 
-type Props = {
+export type Props = {
     cancelTextIOS?: string,
     confirmTextIOS?: string,
     customCancelButtonIOS?: React.ReactElement,
@@ -78,7 +78,7 @@ type Props = {
     use12Hours?: boolean,
 };
 
-export class DateTimePickerWeb extends React.PureComponent<Props> {
+class DateTimePickerWeb extends React.PureComponent<Props> {
 
     static defaultProps = {
         cancelTextIOS: "Cancel",
@@ -354,3 +354,5 @@ export const cancelButtonStyles = StyleSheet.create({
         backgroundColor: "transparent",
     },
 });
+
+export default DateTimePickerWeb;

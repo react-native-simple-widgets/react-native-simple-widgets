@@ -11,14 +11,14 @@ const viewportParams = {
         ...INITIAL_VIEWPORTS,
     },
     defaultViewport: "responsive",
-}
+};
 
 const iphonexlayout = {
     viewport: {
         ...viewportParams,
         defaultViewport: "iphonex",
     },
-}
+};
 
 const items = [
     { label: "Item 0", value: 0 },
@@ -33,7 +33,7 @@ const items = [
 
 const DateTimePickerExample = () => {
 
-    const [isDatePickerVisible, setDatePickerVisibility] = React.useState("");
+    const [ isDatePickerVisible, setDatePickerVisibility ] = React.useState("");
 
     const handleConfirm = (date) => {
         setDatePickerVisibility(date);
@@ -54,17 +54,17 @@ const DateTimePickerExample = () => {
                     items.map((item, index) => {
                         return (
                             <Text key={index}>{item.label}</Text>
-                        )
+                        );
                     })
                 }
             </SelectPicker>
         </View>
-    )
-}
+    );
+};
 
 const MobileViewExample = () => {
 
-    const [isDatePickerVisible, setDatePickerVisibility] = React.useState(false);
+    const [ isDatePickerVisible, setDatePickerVisibility ] = React.useState(false);
 
     const showDatePicker = () => {
         setDatePickerVisibility(true);
@@ -94,8 +94,8 @@ const MobileViewExample = () => {
                 options={items}
             />
         </View>
-    )
-}
+    );
+};
 
 storiesOf("SelectPicker", module)
     .addDecorator(withKnobs)

@@ -23,14 +23,14 @@ export const HIGHLIGHT_COLOR_LIGHT = "#ebebeb";
 export const TITLE_FONT_SIZE = 20;
 export const TITLE_COLOR = "#8f8f8f";
 
-type Props = {
+export type Props = {
     cancelTextIOS?: string,
     confirmTextIOS?: string,
     customCancelButtonIOS?: React.ReactElement,
     customConfirmButtonIOS?: React.ReactElement,
     customHeaderIOS?: React.ReactElement,
     customPickerIOS?: React.ReactElement,
-    selectedValue?: Date,
+    selectedValue?: string,
     mode?: string,
     headerTextIOS?: string,
     modalPropsIOS?: any,
@@ -40,14 +40,18 @@ type Props = {
     pickerContainerStyleIOS?: any,
     onCancel: () => void,
     onConfirm: (date) => void,
-    onChange?: (date) => void,
+    onValueChange?: (date) => void,
     onHide?: (flag, date?) => void,
     maximumDate?: Date,
     minimumDate?: Date,
     options: any[],
+    style?: any,
+    itemStyle?: any,
+    disabled?: boolean,
+    prefixCls?: string,
 };
 
-export class SelectPicker extends React.PureComponent<Props> {
+class SelectPicker extends React.PureComponent<Props> {
 
     static defaultProps = {
         cancelTextIOS: "Cancel",
@@ -57,6 +61,7 @@ export class SelectPicker extends React.PureComponent<Props> {
         isDarkModeEnabled: undefined,
         isVisible: false,
         pickerContainerStyleIOS: {},
+        options: [],
     };
 
     state = {
@@ -92,15 +97,15 @@ export class SelectPicker extends React.PureComponent<Props> {
     };
 
     handleChange = (date) => {
-        if (this.props.onChange) {
-            this.props.onChange(date);
+        if (this.props.onValueChange) {
+            this.props.onValueChange(date);
         }
         this.setState({ currentDate: date });
     };
 
     handleScrollChange = (date, arg2?) => {
-        if (this.props.onChange) {
-            this.props.onChange(date);
+        if (this.props.onValueChange) {
+            this.props.onValueChange(date);
         }
         this.setState({ currentDate: date });
     };
@@ -122,7 +127,7 @@ export class SelectPicker extends React.PureComponent<Props> {
             pickerContainerStyleIOS,
             // onCancel,
             // onConfirm,
-            // onChange,
+            // onValueChange,
             // onHide,
             options,
             ...otherProps
@@ -342,3 +347,5 @@ export const cancelButtonStyles = StyleSheet.create({
         backgroundColor: "transparent",
     },
 });
+
+export default SelectPicker;

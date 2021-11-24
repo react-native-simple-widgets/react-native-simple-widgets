@@ -21,7 +21,7 @@ type Props = {
     options: any[],
 };
 
-const SelectPickerModal = React.memo((props: Props) => {
+const SelectPicker = React.memo((props: Props) => {
     const { selectedValue, mode, isVisible, onCancel, onConfirm, onHide, options, ...otherProps } = props;
     const currentDateRef = React.useRef(selectedValue);
     const [currentMode, setCurrentMode] = React.useState(null);
@@ -82,4 +82,4 @@ areEqual
 //     isVisible: false,
 // };
 
-export { SelectPickerModal };
+export default SelectPicker;

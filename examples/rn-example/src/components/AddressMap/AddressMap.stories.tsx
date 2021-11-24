@@ -1,19 +1,19 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
-import AddressMap from 'react-native-simple-widgets/widgets/AddressMap';
+import AddressMap from "react-native-simple-widgets/widgets/AddressMap";
 import { Circle, Marker } from "react-native-maps";
-import { Dimensions, Platform, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Button from "react-native-simple-elements/components/Button";
 import Text from "react-native-simple-elements/components/Text";
 
-const { width, height } = Dimensions.get('window');
-const ASPECT_RATIO = width / height;
+// const {width, height} = Dimensions.get('window');
+// const ASPECT_RATIO = width / height;
 // const LATITUDE = 37.78825;
 // const LONGITUDE = -122.4324;
 const LATITUDE = 10.8469123;
 const LONGITUDE = 106.6409313;
-const LATITUDE_DELTA = 0.0922;
-const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+// const LATITUDE_DELTA = 0.0922;
+// const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const SPACE = 0.01;
 
 const sampleRegion = {
@@ -35,14 +35,13 @@ const markers = [
 ];
 
 const DefaultExample = (props) => {
-
-    const [ region, setRegion ] = React.useState(sampleRegion);
+    const [ , setRegion ] = React.useState(sampleRegion);
     const [ jump, setJump ] = React.useState(false);
     const [ position, setPosition ] = React.useState("");
 
     const mapRef = React.useRef(null);
     const marker1 = React.useRef(null);
-    const marker2 = React.useRef(null);
+    // const marker2 = React.useRef(null);
 
     return (
         <View
@@ -50,8 +49,7 @@ const DefaultExample = (props) => {
                 flex: 1,
                 borderWidth: 1,
                 borderColor: "red",
-            }}
-        >
+            }}>
             <AddressMap
                 innerRef={mapRef}
                 provider="google"
@@ -64,23 +62,23 @@ const DefaultExample = (props) => {
                 // }}
                 // onRegionChange={(nRegion) => setRegion(nRegion)}
                 // onMapReady={() => {
-                    // Platform.OS === 'ios' && mapRef.current?.animateToRegion(region, 0.1);
+                // Platform.OS === 'ios' && mapRef.current?.animateToRegion(region, 0.1);
                 // }}
                 onRegionChange={() => {
-                    if (!jump) setJump(true);
+                    if (!jump) {
+                        setJump(true);
+                    }
                 }}
                 onRegionChangeComplete={(nRegion) => {
                     setRegion(nRegion);
                     setJump(false);
-                    console.log(nRegion);
+                    // console.log(nRegion);
                 }}
                 // showsUserLocation={true}
                 // showsMyLocationButton={true}
                 onPress={(evt) => {
-                    setPosition(JSON.stringify(evt.nativeEvent.coordinate))
-                }}
-
-            >
+                    setPosition(JSON.stringify(evt.nativeEvent.coordinate));
+                }}>
                 <Marker
                     ref={marker1}
                     coordinate={markers[0].coordinate}
@@ -107,14 +105,11 @@ const DefaultExample = (props) => {
                     fillColor="rgba(0, 150, 255, 0.5)"
                 />
             </AddressMap>
-            <View
-                pointerEvents="box-none"
-            >
+            <View pointerEvents="box-none">
                 <Button
                     onPress={() => {
                         setRegion(sampleRegion);
-                    }}
-                >
+                    }}>
                     Current
                 </Button>
                 <Text>{`${position}`}</Text>
@@ -125,8 +120,7 @@ const DefaultExample = (props) => {
                     alignItems: "center",
                     justifyContent: "center",
                 }}
-                pointerEvents="box-none"
-            >
+                pointerEvents="box-none">
                 <Text>{jump ? "Jump" : "Pin"}</Text>
             </View>
         </View>
@@ -134,11 +128,7 @@ const DefaultExample = (props) => {
 };
 
 const PlaygroundExample = (props) => {
-
-    return (
-        <>
-        </>
-    );
+    return <></>;
 };
 
 storiesOf("AddressMap", module)

@@ -82,13 +82,13 @@ const SimpleHeaderExample = (props) => {
                             >
                                 <Text>{`Item ${index}`}</Text>
                             </View>
-                        )
+                        );
                     })
                 }
             </ScrollviewViewport>
         </>
-    )
-}
+    );
+};
 
 const WithContainerFluidExample = (props) => {
     const title = text("title", "Title");
@@ -124,13 +124,13 @@ const WithContainerFluidExample = (props) => {
                             >
                                 <Text>{`Item ${index}`}</Text>
                             </View>
-                        )
+                        );
                     })
                 }
             </ScrollviewViewport>
         </>
-    )
-}
+    );
+};
 
 const WithLoggedInUserExample = () => {
 
@@ -191,8 +191,8 @@ const WithLoggedInUserExample = () => {
                 )}
             />
         </>
-    )
-}
+    );
+};
 
 const WithScrollbarSizeExample = () => {
 
@@ -216,8 +216,8 @@ const WithScrollbarSizeExample = () => {
                 shouldCheckScrollbarSize={true}
             />
         </>
-    )
-}
+    );
+};
 
 const WithMobileRenderExample = () => {
 
@@ -276,8 +276,8 @@ const WithMobileRenderExample = () => {
                 )}
             />
         </>
-    )
-}
+    );
+};
 
 const WithDesktopRenderExample = () => {
 
@@ -336,8 +336,8 @@ const WithDesktopRenderExample = () => {
                 )}
             />
         </>
-    )
-}
+    );
+};
 
 const WithDesktopRenderAndSearchExample = () => {
     const [ searchKey, setSearchKey ] = React.useState("");
@@ -402,14 +402,14 @@ const WithDesktopRenderAndSearchExample = () => {
                                 >
                                     <Button
                                         onPress={() => {
-
+                                            // do something
                                         }}
                                     >
                                         Click
                                     </Button>
                                     <Button
                                         onPress={() => {
-
+                                            // do something
                                         }}
                                     >
                                         Click
@@ -422,8 +422,8 @@ const WithDesktopRenderAndSearchExample = () => {
                 )}
             />
         </>
-    )
-}
+    );
+};
 
 const PlaygroundExample = () => {
 
@@ -446,8 +446,8 @@ const PlaygroundExample = () => {
                 )}
             />
         </>
-    )
-}
+    );
+};
 
 storiesOf("SimpleHeader", module)
     .addDecorator(withKnobs)

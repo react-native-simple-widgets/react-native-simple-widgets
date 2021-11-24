@@ -16,8 +16,9 @@ const items = [
 ];
 
 const MobileViewExample = () => {
-
-    const [isDatePickerVisible, setDatePickerVisibility] = React.useState(false);
+    const [ isDatePickerVisible, setDatePickerVisibility ] = React.useState(
+        false,
+    );
 
     const showDatePicker = () => {
         setDatePickerVisibility(true);
@@ -34,14 +35,13 @@ const MobileViewExample = () => {
 
     const handleHide = (hide) => {
         // do something
-    }
+    };
 
     return (
         <View
             style={{
                 flex: 1,
-            }}
-        >
+            }}>
             <Button title="Show Picker" onPress={showDatePicker} />
             <SelectPicker
                 isVisible={isDatePickerVisible}
@@ -52,13 +52,9 @@ const MobileViewExample = () => {
                 options={items}
             />
         </View>
-    )
-}
+    );
+};
 
-storiesOf("SelectPicker", module)
-    .add("Default", () => {
-        return (
-            <MobileViewExample
-            />
-        )
-    })
+storiesOf("SelectPicker", module).add("Default", () => {
+    return <MobileViewExample />;
+});

@@ -46,7 +46,7 @@ type Props = {
     minimumDate?: Date,
 };
 
-export class DateTimePickerModal extends React.PureComponent<Props> {
+class DateTimePickerModal extends React.PureComponent<Props> {
 
     static defaultProps = {
         cancelTextIOS: "Cancel",
@@ -320,3 +320,5 @@ export const cancelButtonStyles = StyleSheet.create({
         backgroundColor: "transparent",
     },
 });
+
+export default DateTimePickerModal;
