@@ -1,10 +1,9 @@
 import * as React from "react";
-import { storiesOf } from "@storybook/react-native";
+import { storiesOf } from "@storybook/react";
 import { withKnobs } from "@storybook/addon-knobs";
 import Text from "react-native-simple-elements/components/Text";
 import TabsSectionList from "react-native-simple-widgets/widgets/TabsSectionList";
 import { View } from "react-native";
-import faker from "faker";
 
 const SECTIONS = [
     {
@@ -12,9 +11,9 @@ const SECTIONS = [
         data: Array(5)
             .fill(0)
             .map((_) => ({
-                title: faker.commerce.productName(),
-                description: faker.lorem.lines(2),
-                price: faker.commerce.price(),
+                title: "Product 1",
+                description: "Product 1 desc",
+                price: 10.5,
             })),
     },
     {
@@ -22,9 +21,9 @@ const SECTIONS = [
         data: Array(5)
             .fill(0)
             .map((_) => ({
-                title: faker.commerce.productName(),
-                description: faker.lorem.lines(2),
-                price: faker.commerce.price(),
+                title: "Product 2",
+                description: "Product 2 desc",
+                price: 10.5,
             })),
     },
     {
@@ -32,9 +31,9 @@ const SECTIONS = [
         data: Array(10)
             .fill(0)
             .map((_) => ({
-                title: faker.commerce.productName(),
-                description: faker.lorem.lines(2),
-                price: faker.commerce.price(),
+                title: "Product 3",
+                description: "Product 3 desc",
+                price: 10.5,
             })),
     },
     {
@@ -42,9 +41,9 @@ const SECTIONS = [
         data: Array(10)
             .fill(0)
             .map((_) => ({
-                title: faker.commerce.productName(),
-                description: faker.lorem.lines(2),
-                price: faker.commerce.price(),
+                title: "Product 4",
+                description: "Product 4 desc",
+                price: 10.5,
             })),
     },
     {
@@ -52,9 +51,9 @@ const SECTIONS = [
         data: Array(10)
             .fill(0)
             .map((_) => ({
-                title: faker.commerce.productName(),
-                description: faker.lorem.lines(2),
-                price: faker.commerce.price(),
+                title: "Product 5",
+                description: "Product 5 desc",
+                price: 10.5,
             })),
     },
 ];
@@ -65,15 +64,19 @@ const DefaultExample = () => {
         // <View style={styles.container}>
         <View
             style={{
-                flex: 1,
+                width: "100%",
+                height: "100%",
                 backgroundColor: "#f6f6f6",
             }}>
             <TabsSectionList
                 sections={SECTIONS}
-                keyExtractor={(item) => item.title}
+                keyExtractor={(item, index) => `${item.title}_${index}`}
                 stickySectionHeadersEnabled={false}
                 scrollToLocationOffset={50}
                 // tabBarStyle={styles.tabBar}
+                contentContainerStyle={{
+                    height: "100%",
+                }}
                 tabBarStyle={{
                     backgroundColor: "#fff",
                     borderBottomColor: "#f4f4f4",
@@ -140,7 +143,7 @@ const DefaultExample = () => {
                         </Text>
                     </View>
                 )}
-                renderItem={({ item }) => (
+                renderItem={({ item, index }) => (
                     // <View style={styles.itemContainer}>
                     <View
                         style={{
@@ -175,7 +178,7 @@ const DefaultExample = () => {
                                 color: "#b6b6b6",
                                 fontSize: 16,
                             }}>
-                            {item.description}
+                            {`${item.description} ${index}`}
                         </Text>
                     </View>
                 )}

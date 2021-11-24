@@ -1,11 +1,11 @@
 import * as React from "react";
 import {
-    View,
     SectionList as RNSectionList,
     SectionListProps,
     ViewStyle,
     RegisteredStyle,
-    SectionListData
+    SectionListData,
+    Platform
 } from "react-native";
 import TabBar from "./TabBar";
 
@@ -38,7 +38,7 @@ export default class SectionList extends React.PureComponent<IProps, IState> {
         const prepareSections = sections.map((item, index) => ({ ...item, index }));
 
         return (
-            <View style={{ flex: 1 }}>
+            <>
                 <TabBar
                     sections={prepareSections}
                     renderTab={renderTab}
@@ -46,7 +46,8 @@ export default class SectionList extends React.PureComponent<IProps, IState> {
                     currentIndex={this.state.currentIndex}
                     onPress={(index: number) => {
                         this.setState({ currentIndex: index });
-                        this.blockUpdateIndex = true;
+                        // this.blockUpdateIndex = true;
+                        this.blockUpdateIndex = Platform.OS !== "web";
 
                         const sectionList = this.sectionList.current;
                         if (sectionList && sectionList.scrollToLocation) {
@@ -78,7 +79,7 @@ export default class SectionList extends React.PureComponent<IProps, IState> {
                     ref={this.sectionList as React.RefObject<any>}
                     onMomentumScrollEnd={() => (this.blockUpdateIndex = false)}
                 />
-            </View>
+            </>
         );
     }
 }
