@@ -4,7 +4,7 @@ import "intl/locale-data/jsonp/vi";
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat
 const formatCurrency = (amount, locale = "en-US", currency = "USD", currencyDisplay = "symbol") => {
-    const formatter =  new Intl.NumberFormat(locale, {
+    const formatter = new Intl.NumberFormat(locale, {
         style: "currency",
         currency: currency || "USD",
         currencyDisplay: currencyDisplay,
@@ -28,6 +28,25 @@ const localeCurrencyFormat = (
     return formatter.format(amount);
 };
 
+const localeCurrencyFormatWithoutUnit = (
+    amount = 0,
+    locale = "en-GB",
+    currencyCode = "USD",
+    currencyDisplay = "symbol"
+) => {
+    const formatter = new Intl.NumberFormat(locale, {
+        style: "currency",
+        currency: currencyCode,
+        currencyDisplay,
+    });
+
+    return formatter.formatToParts(amount)
+        .filter(x => x.type !== "currency")
+        .map(x => x.value)
+        .join("")
+        .trim()
+};
+
 const localeCurrencyDecimalFormat = (amount = 0, locale = "en-GB") => {
     const formatter = new Intl.NumberFormat(locale, {
         style: "decimal",
@@ -41,7 +60,7 @@ const localeCurrencyDecimalFormat = (amount = 0, locale = "en-GB") => {
 const localeCurrencyDecimalSeparator = (locale = "en-GB") => {
     const formatter = new Intl.NumberFormat(locale, {
         style: "decimal",
-        minimumFractionDigits: 2,
+        minimumFractionDigits: 0,
         maximumFractionDigits: 2,
     });
 
@@ -51,6 +70,7 @@ const localeCurrencyDecimalSeparator = (locale = "en-GB") => {
 export {
     formatCurrency,
     localeCurrencyFormat,
+    localeCurrencyFormatWithoutUnit,
     localeCurrencyDecimalFormat,
     localeCurrencyDecimalSeparator,
 };

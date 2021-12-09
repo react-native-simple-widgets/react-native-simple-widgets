@@ -18,6 +18,25 @@ const GlobalStyle = createGlobalStyle`
     input:focus, textarea:focus, select:focus{
         outline: none !important;
     }
+
+    [data-paging-enabled-fix] > div {
+        flex-direction: row;
+        width: 100%;
+    }
+
+    [data-paging-enabled-fix] > div > div {
+        flex-direction: row;
+        width: 100%;
+    }
+
+    [data-paging-enabled-fix] > div > div > div {
+        flex-direction: row;
+        width: 100%;
+    }
+
+    [data-paging-enabled-fix] > div > div > div {
+        height: 100%;
+    }
 `;
 
 const StoryBookUI = ({ children }) => {

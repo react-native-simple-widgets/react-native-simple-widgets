@@ -1,12 +1,14 @@
 import * as React from "react";
-import { Dimensions, ImageBackground, StyleSheet, Text, View } from "react-native";
+import { Dimensions, FlatList, ImageBackground, StyleSheet, Text, View } from "react-native";
 import { storiesOf } from "@storybook/react";
 import { withKnobs } from "@storybook/addon-knobs";
-import RatioBox from "react-native-simple-elements/components/RatioBox";
+import RatioBox, { SUPPORTED_PERCENTAGE_RATIOS } from "react-native-simple-elements/components/RatioBox";
 import SwiperFlatList from "react-native-simple-widgets/widgets/SwiperFlatList";
 
 import { fox, cat, background, element, lion } from "./images";
 import { CustomPagination } from "./CustomPagination";
+import Image from "react-native-simple-elements/components/Image";
+import { AbsoluteView } from "react-native-simple-elements/components/Container";
 
 const { width } = Dimensions.get("window");
 
@@ -17,18 +19,10 @@ const items = Array.from(Array(5)).map((_, index) => image(index));
 const SwiperFlatListExample = () => {
     return (
         <RatioBox
-            width="100%"
+            width={width}
+            ratio={SUPPORTED_PERCENTAGE_RATIOS.WH_36x9}
         >
-            <View
-                style={{
-                    position: "absolute",
-                    top: 0,
-                    right: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                }}
-            >
+            <AbsoluteView>
                 <SwiperFlatList
                     autoplay={false}
                     autoplayDelay={2}
@@ -37,13 +31,11 @@ const SwiperFlatListExample = () => {
                     // autoplayInvertDirection
                     data={items}
                     renderItem={({ item, index }) => (
-                        <ImageBackground
+                        <Image
                             style={styles.image}
                             source={item.image}
                             testID={`container_swiper_renderItem_screen_${index}`}
-                        >
-                            <Text style={styles.text}>Item at index {index}</Text>
-                        </ImageBackground>
+                        />
                     )}
                     showPagination
                     PaginationComponent={CustomPagination}
@@ -52,7 +44,7 @@ const SwiperFlatListExample = () => {
                     }}
                     e2eID="container_swiper_renderItem"
                 />
-            </View>
+            </AbsoluteView>
         </RatioBox>
     );
 };
@@ -85,9 +77,28 @@ const WithAutoplayExample = () => {
     );
 };
 
+const FlatListExample = () => {
+    return (
+        <FlatList
+            data={items}
+            renderItem={({ item, index }) => (
+                <ImageBackground
+                    style={styles.image}
+                    source={item.image}
+                    testID={`container_swiper_renderItem_screen_${index}`}
+                >
+                    <Text style={styles.text}>Item at index {index}</Text>
+                </ImageBackground>
+            )}
+            horizontal={true}
+        />
+    );
+};
+
 const styles = StyleSheet.create({
     image: {
         width: width,
+        // height: "auto",
         resizeMode: "cover",
         justifyContent: "flex-end",
     },
@@ -102,6 +113,7 @@ storiesOf("SwiperFlatList", module)
     .addDecorator(withKnobs)
     .add("Default", () => <SwiperFlatListExample />)
     .add("Autoplay", () => <WithAutoplayExample />)
+    .add("FlatListExample", () => <FlatListExample />)
     .add("Loop", () => {
         return (
             <SwiperFlatList
