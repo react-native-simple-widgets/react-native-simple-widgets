@@ -66,9 +66,12 @@ const SimpleHeaderExample = (props) => {
                             icon={HomeIcon}
                             color={colors.white}
                         />
-                        <Title style={{ color: colors.white }}>SimpleHeader</Title>
+                        <Title style={{ color: colors.text }}>SimpleHeader</Title>
                     </>
                 )}
+                appbarStyle={{
+                    backgroundColor: "white",
+                }}
             />
             <ScrollviewViewport>
                 {(Array.isArray(items) && items.length > 0) &&

@@ -8,7 +8,7 @@ import {
 } from "react-native-simple-elements/components/Appbar";
 import useScreenSize from "react-native-simple-elements/components/Container/utils/useScreenSize";
 import HomeIcon from "@mdi/svg/svg/home.svg";
-import { View } from "react-native";
+import { View, StyleProp, ViewStyle } from "react-native";
 import Container, { ContainerFluid, FlexItem } from "react-native-simple-elements/components/Container";
 
 const HeaderContainer = styled.View({
@@ -36,6 +36,7 @@ type Props = {
     onBackActionPress?: () => void,
     shouldCheckScrollbarSize?: boolean,
     fluid?: boolean,
+    appbarStyle?: StyleProp<ViewStyle>,
 };
 
 const defaultProps = {
@@ -59,6 +60,7 @@ const SimpleHeader = ({
     onBackActionPress,
     shouldCheckScrollbarSize,
     fluid,
+    appbarStyle,
 }: Props) => {
 
     const ContainerComponent = fluid ? ContainerFluid : Container;
@@ -85,9 +87,12 @@ const SimpleHeader = ({
             }}
         >
             <AppbarHeader
-                style={{
-                    justifyContent: "center",
-                }}
+                style={[
+                    {
+                        justifyContent: "center",
+                    },
+                    appbarStyle,
+                ]}
             >
                 <ContainerComponent>
                     {isMobileView ?
