@@ -34,6 +34,7 @@ type Props = {
     onLogoutClick?: () => void,
     userMenuItems?: MenuItemProps[],
     onUserMenuItemPress?: (item?) => void,
+    menuStyle?: StyleProp<ViewStyle>,
 }
 
 const defaultProps = {
@@ -50,6 +51,7 @@ const AuthorizedUserMenu = ({
     onLogoutClick,
     userMenuItems,
     onUserMenuItemPress,
+    menuStyle,
 }: Props) => {
 
     const {
@@ -82,20 +84,22 @@ const AuthorizedUserMenu = ({
                     source={{ uri: avatarUrl }}
                     circle={circle}
                     onPress={openMenu}
+                    style={avatarStyle}
                 />
                 :
                 <TouchableRipple
                     onPress={openMenu}
+                    style={avatarStyle}
                 >
                     <AvatarText
                         label={parseAvatarText(loggedInUser?.fullName)}
                         size={avatarSize}
-                        style={avatarStyle}
                         labelStyle={avatarLabelStyle}
                     />
                 </TouchableRipple>
             }
             alignRight={true}
+            containerStyle={menuStyle}
         >
             {loggedInUser?.userId &&
                 <Menu.Item

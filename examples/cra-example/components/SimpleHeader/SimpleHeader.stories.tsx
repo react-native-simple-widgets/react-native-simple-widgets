@@ -149,22 +149,33 @@ const WithLoggedInUserExample = () => {
                     <>
                         <IconButton
                             icon={HomeIcon}
-                            color={colors.white}
+                            // color={colors.white}
                         />
-                        <Title style={{ color: colors.white }}>SimpleHeader</Title>
+                        <Title
+                            // style={{ color: colors.white }}
+                        >
+                            SimpleHeader
+                        </Title>
                     </>
                 )}
                 desktopRight={() => (
                     <View
                         style={{
-                            justifyContent: "center",
+                            flexDirection: "row",
+                            alignItems: "center",
                         }}
+                        testID="DesktopRight"
                     >
+                        <Button
+                            mode="contained"
+                        >
+                            Actions
+                        </Button>
                         <AuthorizedUserMenu
                             circle={true}
                             avatarSize={36}
                             avatarStyle={{
-                                backgroundColor: colors.white,
+                                // backgroundColor: colors.white,
                             }}
                             loggedInUser={{
                                 userId: "123",
@@ -188,6 +199,9 @@ const WithLoggedInUserExample = () => {
                             ]}
                             onUserMenuItemPress={() => {
                                 alert("MenuItem pressed");
+                            }}
+                            menuStyle={{
+                                marginLeft: "8px",
                             }}
                         />
                     </View>
